@@ -1,0 +1,305 @@
+"        _             _
+"  _ __ | |_   _  __ _(_)_ __  ___
+" | '_ \| | | | |/ _` | | '_ \/ __|
+" | |_) | | |_| | (_| | | | | \__ \
+" | .__/|_|\__,_|\__, |_|_| |_|___/
+" |_|            |___/
+"
+filetype off
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'majutsushi/tagbar'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'chriskempson/base16-vim'
+Plug 'rizzatti/dash.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'Raimondi/delimitMate'
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-obsession'
+Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'davidhalter/jedi-vim'
+Plug 'kh3phr3n/python-syntax'
+Plug 'nvie/vim-flake8'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'previm/previm'
+
+call plug#end()
+
+"        _                      _
+" __   _(_)_ __ ___    ___  ___| |_ _   _ _ __
+" \ \ / / | '_ ` _ \  / __|/ _ \ __| | | | '_ \
+"  \ V /| | | | | | | \__ \  __/ |_| |_| | |_) |
+"   \_/ |_|_| |_| |_| |___/\___|\__|\__,_| .__/
+"                                        |_|
+"
+
+set clipboard=unnamed
+filetype plugin indent on
+syntax on
+set fileencoding=utf-8
+set mouse=a
+
+autocmd! bufwritepost .vimrc source %
+
+let mapleader = " "
+
+nmap <C-K> :update<CR>
+nmap <leader>ee :quit<CR>
+nmap <Leader>E :qa!<CR>
+nmap <Leader>N :NERDTreeToggle<CR>
+nmap <Leader>F :NERDTreeFind<CR>
+" nmap <C-M> :PrevimOpen<CR>
+nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>tj :TagbarOpen j<CR>
+nmap <leader>fw :FixWhitespace<CR>
+nmap <leader>ez :e! ~/.zshrc<cr>
+nmap <leader>ev :e! ~/.vimrc<cr>
+nmap <leader>et :e! ~/.tmux.conf<cr>
+nmap <leader>no :nohlsearch<cr>
+nmap <leader>re :edit<cr>
+nmap <leader>gh :Dash<cr>
+nmap <leader>T :enew<cr>
+nmap <leader>= :bnext<CR>
+nmap <leader>- :bprevious<CR>
+nmap <leader>bq :b#<bar>bd#<CR>
+nmap <leader>bl :ls<CR>
+nmap <leader>bw :%bwipeout<CR>
+nmap <leader>B :set wrap linebreak tw=0<CR>
+nmap <leader>BB :set nowrap linebreak tw=99<CR>
+nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
+nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
+nmap <leader>cf :call Flake8()<CR>
+
+
+" json beautify
+nmap <leader>js :%!python -m json.tool<CR>
+" html beautify
+vmap <leader>ht :!tidy -q -i --show-errors 0<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+" allows hidden modified buffers
+set hidden
+
+set undolevels=1000
+
+set nobackup
+set nowritebackup
+set noswapfile
+
+" toggle invisible chars
+nmap <leader>L :set list!<CR>
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " ~ NEOVIM
+set showbreak=↪
+
+set relativenumber
+set guicursor=	" change cursor on neovim
+
+" set incsearch		" search as characters are entered ~ NEOVIM
+set ignorecase
+set smartcase
+
+" indent settings
+au BufNewFile,BufRead *.py,*.sql
+    \| set tabstop=4
+    \| set softtabstop=4
+    \| set shiftwidth=4
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \| set tabstop=2
+    \| set softtabstop=2
+    \| set shiftwidth=2
+
+set expandtab
+set shiftround      " round indent to a multiple of 'shiftwidth'
+set number
+set nowrap          " don't automatically wrap on load
+set fo-=t           " don't automatically wrap text when typing
+set showmatch
+set gdefault
+set winheight=5
+set winminheight=5
+set winheight=999
+
+" escape terminal mode
+tnoremap <Esc> <C-\><C-n>
+autocmd BufEnter term://* startinsert
+
+" enable folding
+set foldmethod=indent
+set foldlevel=99
+
+set tags=tags
+
+"            _
+"   ___ ___ | | ___  _ __ ___
+"  / __/ _ \| |/ _ \| '__/ __|
+" | (_| (_) | | (_) | |  \__ \
+"  \___\___/|_|\___/|_|  |___/
+"
+
+set termguicolors
+
+" Source file with theme setting
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
+
+"        _             _                  _
+"  _ __ | |_   _  __ _(_)_ __    ___  ___| |_ _   _ _ __
+" | '_ \| | | | |/ _` | | '_ \  / __|/ _ \ __| | | | '_ \
+" | |_) | | |_| | (_| | | | | | \__ \  __/ |_| |_| | |_) |
+" | .__/|_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
+" |_|            |___/                             |_|
+"
+
+" fugitive:
+nmap <leader>gs :Gstatus<CR><C-w>25+
+
+" python
+let g:python_host_prog = '/Users/t.medeiros/.pyenv/versions/tools2/bin/python'
+let g:python3_host_prog = '/Users/t.medeiros/.pyenv/versions/tools3/bin/python'
+
+let python_highlight_all = 1
+
+" nerdtree:
+let NERDTreeWinSize=42
+let NERDTreeShowHidden=1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
+
+" git-gutter
+highlight GitGutterAdd guibg=XYZ
+highlight GitGutterChange guibg=XYZ
+highlight GitGutterDelete guibg=XYZ
+highlight GitGutterChangeDelete guibg=XYZ
+
+set updatetime=100
+let g:gitgutter_realtime=1
+
+" airline:
+" let g:airline_theme='tomorrow'
+let g:airline_theme='chico_airline'
+let g:airline_powerline_fonts = 1
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ ' ' : 'S',
+      \ }
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'b', 'c' ],
+      \ ['error', 'warning', 'w', 'x', 'y', 'z']
+      \ ]
+" let g:airline_section_w = '%{ObsessionStatus()}'
+let g:airline_section_z = '%3p%% %l %c'
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+" tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '',
+        \ '1': '',
+        \ '2': '',
+        \ '3': '',
+        \ '4': '',
+        \ '5': '',
+        \ '6': '',
+        \ '7': '',
+        \ '8': '',
+        \ '9': ''
+        \}
+
+" switch buffers maps
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" webdevicons:
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_vimfiler = 1
+
+" fzf:
+let g:fzf_buffers_jump = 0
+noremap <C-F> :FZF<CR>
+noremap <C-P> :Buffers<CR>
+
+" tagbar:
+let g:tagbar_sort = 0
+
+" previm
+let g:previm_open_cmd = 'open -a Firefox\ Developer\ Edition'
+
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
+
+" zoom:
+nmap <C-W>z <Plug>(zoom-toggle)
+
+
+"                _       _
+"  ___  ___ _ __(_)_ __ | |_ ___
+" / __|/ __| '__| | '_ \| __/ __|
+" \__ \ (__| |  | | |_) | |_\__ \
+" |___/\___|_|  |_| .__/ \__|___/
+"                 |_|
+
+" increase numbers:
+function! Incr()
+  let a = line('.') - line("'<")
+  let c = virtcol("'<")
+  if a > 0
+    execute 'normal! '.c.'|'.a."\<C-a>"
+  endif
+2 normal `<
+endfunction
+vnoremap <C-a> :call Incr()<CR>
+
+" relative numbers:
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
