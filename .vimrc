@@ -18,6 +18,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
 Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'do': './install --all' }
@@ -257,13 +258,13 @@ let g:webdevicons_enable_vimfiler = 1
 " fzf:
 let g:fzf_buffers_jump = 0
 noremap <C-F> :FZF<CR>
-noremap <C-P> :Buffers<CR>
+noremap <C-B> :Buffers<CR>
 
 " tagbar:
 let g:tagbar_sort = 0
 
 " previm
-let g:previm_open_cmd = 'open -a Firefox\ Developer\ Edition'
+let g:previm_open_cmd = 'open -a Firefox'
 
 augroup PrevimSettings
     autocmd!
