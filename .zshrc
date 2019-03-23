@@ -70,3 +70,10 @@ if [ -r ~/.not-public ]
 then
     source ~/.not-public
 fi
+
+
+# setting terminal color
+# TODO add if when changing the color
+echo -e "\033]6;1;bg;red;brightness;24\a"
+echo -e "\033]6;1;bg;green;brightness;24\a"
+echo -e "\033]6;1;bg;blue;brightness;24\a"
