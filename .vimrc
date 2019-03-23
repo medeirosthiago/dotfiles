@@ -56,7 +56,9 @@ autocmd! bufwritepost .vimrc source %
 
 let mapleader = " "
 
-nmap <C-K> :update<CR>
+
+
+nmap <C-S> :update<CR>
 nmap <leader>ee :quit<CR>
 nmap <Leader>E :qa!<CR>
 nmap <Leader>N :NERDTreeToggle<CR>
@@ -82,6 +84,35 @@ nmap <leader>BB :set nowrap linebreak tw=99<CR>
 nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
 nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
 nmap <leader>cf :call Flake8()<CR>
+
+
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nmap <leader>cp :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nmap <leader>cap :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nmap <leader>cf :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nmap <leader>cd :let @*=expand("%:p:h")<CR>
+endif
+
+if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
+  " relative path (src/foo.txt)
+  nmap <leader>cp :let @+=expand("%")<CR>
+
+  " absolute path (/something/src/foo.txt)
+  nmap <leader>cap :let @+=expand("%:p")<CR>
+
+  " filename (foo.txt)
+  nmap <leader>cf :let @+=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nmap <leader>cd :let @+=expand("%:p:h")<CR>
+endif
 
 
 " json beautify
@@ -177,7 +208,7 @@ let g:python3_host_prog = '/Users/t.medeiros/.pyenv/versions/tools3/bin/python'
 let python_highlight_all = 1
 
 " nerdtree:
-let NERDTreeWinSize=42
+let NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
