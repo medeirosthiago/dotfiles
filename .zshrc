@@ -12,6 +12,7 @@ export EDITOR=nvim
 
 export PATH="/usr/local/bin:$PATH"
 
+
 # ALIAS
 alias source-apply="source ~/.zshrc"
 alias vim=nvim
@@ -23,6 +24,7 @@ alias dark=base16_cisco
 alias light=base16_cisco-light
 alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 
 # PYTHON
 export WORKON_HOME=$HOME/.ve
@@ -50,6 +52,12 @@ fi
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# setting terminal color
+# TODO add if when changing the color
+echo -e "\033]6;1;bg;red;brightness;24\a"
+echo -e "\033]6;1;bg;green;brightness;24\a"
+echo -e "\033]6;1;bg;blue;brightness;24\a"
+
 # apply fzf script
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -70,10 +78,3 @@ if [ -r ~/.not-public ]
 then
     source ~/.not-public
 fi
-
-
-# setting terminal color
-# TODO add if when changing the color
-echo -e "\033]6;1;bg;red;brightness;24\a"
-echo -e "\033]6;1;bg;green;brightness;24\a"
-echo -e "\033]6;1;bg;blue;brightness;24\a"
