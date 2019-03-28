@@ -1,11 +1,7 @@
-"        _             _
-"  _ __ | |_   _  __ _(_)_ __  ___
-" | '_ \| | | | |/ _` | | '_ \/ __|
-" | |_) | | |_| | (_| | | | | \__ \
-" | .__/|_|\__,_|\__, |_|_| |_|___/
-" |_|            |___/
-"
 filetype off
+
+
+" PLUGINS
 
 call plug#begin('~/.vim/plugged')
 
@@ -38,13 +34,8 @@ Plug 'previm/previm'
 
 call plug#end()
 
-"        _                      _
-" __   _(_)_ __ ___    ___  ___| |_ _   _ _ __
-" \ \ / / | '_ ` _ \  / __|/ _ \ __| | | | '_ \
-"  \ V /| | | | | | | \__ \  __/ |_| |_| | |_) |
-"   \_/ |_|_| |_| |_| |___/\___|\__|\__,_| .__/
-"                                        |_|
-"
+
+" VIM SETUP
 
 set clipboard=unnamed
 filetype plugin indent on
@@ -56,8 +47,6 @@ autocmd! bufwritepost .vimrc source %
 
 let mapleader = " "
 
-
-
 nmap <C-S> :update<CR>
 nmap <leader>ee :quit<CR>
 nmap <Leader>E :qa!<CR>
@@ -67,13 +56,13 @@ nmap <Leader>F :NERDTreeFind<CR>
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>tj :TagbarOpen j<CR>
 nmap <leader>fw :FixWhitespace<CR>
-nmap <leader>ez :e! ~/.zshrc<cr>
-nmap <leader>ev :e! ~/.vimrc<cr>
-nmap <leader>et :e! ~/.tmux.conf<cr>
-nmap <leader>no :nohlsearch<cr>
-nmap <leader>re :edit<cr>
-nmap <leader>gh :Dash<cr>
-nmap <leader>T :enew<cr>
+nmap <leader>ez :e! ~/.zshrc<CR>
+nmap <leader>ev :e! ~/.vimrc<CR>
+nmap <leader>et :e! ~/.tmux.conf<CR>
+nmap <leader>no :nohlsearch<CR>
+nmap <leader>re :edit<CR>
+nmap <leader>gh :Dash<CR>
+nmap <leader>T :enew<CR>
 nmap <leader>= :bnext<CR>
 nmap <leader>- :bprevious<CR>
 nmap <leader>bq :b#<bar>bd#<CR>
@@ -85,17 +74,13 @@ nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
 nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
 nmap <leader>cf :call Flake8()<CR>
 
-
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path  (src/foo.txt)
   nmap <leader>cp :let @*=expand("%")<CR>
-
   " absolute path  (/something/src/foo.txt)
   nmap <leader>cap :let @*=expand("%:p")<CR>
-
   " filename       (foo.txt)
   nmap <leader>cf :let @*=expand("%:t")<CR>
-
   " directory name (/something/src)
   nmap <leader>cd :let @*=expand("%:p:h")<CR>
 endif
@@ -103,17 +88,13 @@ endif
 if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
   " relative path (src/foo.txt)
   nmap <leader>cp :let @+=expand("%")<CR>
-
   " absolute path (/something/src/foo.txt)
   nmap <leader>cap :let @+=expand("%:p")<CR>
-
   " filename (foo.txt)
   nmap <leader>cf :let @+=expand("%:t")<CR>
-
   " directory name (/something/src)
   nmap <leader>cd :let @+=expand("%:p:h")<CR>
 endif
-
 
 " json beautify
 nmap <leader>js :%!python -m json.tool<CR>
@@ -176,12 +157,8 @@ set foldlevel=99
 
 set tags=tags
 
-"            _
-"   ___ ___ | | ___  _ __ ___
-"  / __/ _ \| |/ _ \| '__/ __|
-" | (_| (_) | | (_) | |  \__ \
-"  \___\___/|_|\___/|_|  |___/
-"
+
+" COLORS
 
 set termguicolors
 
@@ -190,15 +167,9 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-"        _             _                  _
-"  _ __ | |_   _  __ _(_)_ __    ___  ___| |_ _   _ _ __
-" | '_ \| | | | |/ _` | | '_ \  / __|/ _ \ __| | | | '_ \
-" | |_) | | |_| | (_| | | | | | \__ \  __/ |_| |_| | |_) |
-" | .__/|_|\__,_|\__, |_|_| |_| |___/\___|\__|\__,_| .__/
-" |_|            |___/                             |_|
-"
+" PLUGIN SETUP
 
-" fugitive:
+" fugitive
 nmap <leader>gs :Gstatus<CR><C-w>25+
 
 " python
@@ -207,7 +178,7 @@ let g:python3_host_prog = '/Users/t.medeiros/.pyenv/versions/tools3/bin/python'
 
 let python_highlight_all = 1
 
-" nerdtree:
+" nerdtree
 let NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 let g:NERDTreeIndicatorMapCustom = {
@@ -231,8 +202,7 @@ highlight GitGutterChangeDelete guibg=XYZ
 set updatetime=100
 let g:gitgutter_realtime=1
 
-" airline:
-" let g:airline_theme='tomorrow'
+" airline
 let g:airline_theme='chico_airline'
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = {
@@ -308,14 +278,9 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
 nmap <C-W>z <Plug>(zoom-toggle)
 
 
-"                _       _
-"  ___  ___ _ __(_)_ __ | |_ ___
-" / __|/ __| '__| | '_ \| __/ __|
-" \__ \ (__| |  | | |_) | |_\__ \
-" |___/\___|_|  |_| .__/ \__|___/
-"                 |_|
+" SCRIPTS
 
-" increase numbers:
+" increase numbers
 function! Incr()
   let a = line('.') - line("'<")
   let c = virtcol("'<")
@@ -326,7 +291,7 @@ function! Incr()
 endfunction
 vnoremap <C-a> :call Incr()<CR>
 
-" relative numbers:
+" relative numbers
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
@@ -334,4 +299,4 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-n> :call NumberToggle()<CR>
