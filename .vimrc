@@ -145,7 +145,7 @@ set ignorecase
 set smartcase
 
 " indent settings
-au BufNewFile,BufRead *.py,*.sql
+au BufNewFile,BufRead *.sql,*.py
     \| set tabstop=4
     \| set softtabstop=4
     \| set shiftwidth=4
