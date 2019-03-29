@@ -194,11 +194,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 " git-gutter
-highlight GitGutterAdd guibg=XYZ
-highlight GitGutterChange guibg=XYZ
-highlight GitGutterDelete guibg=XYZ
-highlight GitGutterChangeDelete guibg=XYZ
-
 set updatetime=100
 let g:gitgutter_realtime=1
 
