@@ -32,6 +32,20 @@ let s:gui0D = "7cafc2"
 let s:gui0E = "ba8baf"
 let s:gui0F = "a16946"
 
+
+" BRO
+let s:broRED0     = "EB5F59"
+let s:broRED1     = "BF4F40"
+let s:broRED2     = "C77838"
+let s:broWHITE    = "D7DADB"
+let s:broBLACK    = "191919"
+let s:broBLUE     = "4A8CC6"
+let s:broGREEN    = "64C87A"
+let s:broORANGE   = "D5803A"
+let s:broYELLOW   = "D5B240"
+let s:broPURPLE   = "6369AC"
+let s:broGRAY     = "595959"
+
 " Terminal color definitions
 let s:cterm00 = "00"
 let s:cterm03 = "08"
@@ -291,16 +305,27 @@ call <sid>hi("phpComparison",      s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("phpParent",          s:gui05, "", s:cterm05, "", "", "")
 
 " Python highlighting
-call <sid>hi("pythonOperator",            s:gui0E, "", s:cterm0E, "", "", "")
-call <sid>hi("pythonRepeat",              s:gui0E, "", s:cterm0E, "", "", "")
-call <sid>hi("pythonInclude",             s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("pythonStatement",           s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("pythonTodo",                s:gui0A, "", s:cterm0A, "", "", "")
-call <sid>hi("pythonSelf",                s:gui0B, "", s:cterm0B, "", "", "")
-" call <sid>hi("pythonTripleQuotes",        s:gui03, "", s:cterm03, "", "", "")
-" call <sid>hi("pythonString",              s:gui0A, "", s:cterm0A, "", "", "")
-" call <sid>hi("pythonRawString",           s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("pythonComment",             s:gui03, "", s:cterm03, "", "", "")
+call <sid>hi("pythonOperator",            s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonExtraOperator",       s:broRED0, "", "", "", "", "")
+call <sid>hi("pythonRepeat",              s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonConditional",         s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonInclude",             s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonTodo",                s:broRED0, "", "", "", "", "")
+call <sid>hi("pythonStatement",           s:broBLUE, "", "", "", "", "")
+call <sid>hi("pythonString",              s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonQuotes",              s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonTripleQuotes",        s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonComment",             s:broGRAY, "", "", "", "italic", "")
+call <sid>hi("pythonSelf",                s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonDecorator",           s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonClass",               s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonClassVars",           s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonClassParameters",     s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonFunction",            s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonFunctionVars",        s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonFunctionParameters",  s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonBuiltin",             s:broBLUE, "", "", "", "bold", "")
+call <sid>hi("pythonNumber",              s:broPURPLE, "", "", "", "", "")
 
 " Ruby highlighting
 call <sid>hi("rubyAttribute",               s:gui0D, "", s:cterm0D, "", "", "")
