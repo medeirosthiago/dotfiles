@@ -32,6 +32,20 @@ let s:gui0D = "7cafc2"
 let s:gui0E = "ba8baf"
 let s:gui0F = "a16946"
 
+
+" BRO
+let s:broRED0     = "EB5F59"
+let s:broRED1     = "BF4F40"
+let s:broRED2     = "C77838"
+let s:broWHITE    = "D7DADB"
+let s:broBLACK    = "191919"
+let s:broBLUE     = "4A8CC6"
+let s:broGREEN    = "64C87A"
+let s:broORANGE   = "D5803A"
+let s:broYELLOW   = "D5B240"
+let s:broPURPLE   = "6369AC"
+let s:broGRAY     = "595959"
+
 " Terminal color definitions
 let s:cterm00 = "00"
 let s:cterm03 = "08"
@@ -122,14 +136,14 @@ call <sid>hi("ErrorMsg",      s:gui08, s:gui00, s:cterm08, s:cterm00, "", "")
 call <sid>hi("Exception",     s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("FoldColumn",    s:gui0C, s:gui01, s:cterm0C, s:cterm01, "", "")
 call <sid>hi("Folded",        s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
-call <sid>hi("IncSearch",     s:gui01, s:gui0D, s:cterm01, s:cterm0D, "none", "")
-call <sid>hi("Italic",        "", "", "", "", "none", "")
+call <sid>hi("IncSearch",     s:gui01, s:gui08, s:cterm01, s:cterm0D, "none", "")
+call <sid>hi("Italic",        "", "", "", "", "italic", "")
 call <sid>hi("Macro",         s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("MatchParen",    "", s:gui03, "", s:cterm03,  "", "")
 call <sid>hi("ModeMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("MoreMsg",       s:gui0B, "", s:cterm0B, "", "", "")
 call <sid>hi("Question",      s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("Search",        s:gui03, s:gui0D, s:cterm03, s:cterm0D,  "", "")
+call <sid>hi("Search",        s:gui03, s:gui0E, s:cterm03, s:cterm0D,  "", "")
 call <sid>hi("SpecialKey",    s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("TooLong",       s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("Underlined",    s:gui08, "", s:cterm08, "", "", "")
@@ -205,10 +219,10 @@ call <sid>hi("cssClassName",   s:gui0E, "", s:cterm0E, "", "", "")
 call <sid>hi("cssColor",       s:gui0C, "", s:cterm0C, "", "", "")
 
 " Diff highlighting
-call <sid>hi("DiffAdd",      s:gui0B, s:gui01,  s:cterm0B, s:cterm01, "", "")
+call <sid>hi("DiffAdd",      s:gui0A, s:gui01,  s:cterm0B, s:cterm01, "", "")
 call <sid>hi("DiffChange",   s:gui03, s:gui01,  s:cterm03, s:cterm01, "", "")
-call <sid>hi("DiffDelete",   s:gui08, s:gui01,  s:cterm08, s:cterm01, "", "")
-call <sid>hi("DiffText",     s:gui0D, s:gui01,  s:cterm0D, s:cterm01, "", "")
+call <sid>hi("DiffDelete",   s:gui08, s:gui00,  s:cterm08, s:cterm01, "", "")
+call <sid>hi("DiffText",     s:gui08, s:gui01,  s:cterm0D, s:cterm01, "", "")
 call <sid>hi("DiffAdded",    s:gui0B, s:gui00,  s:cterm0B, s:cterm00, "", "")
 call <sid>hi("DiffFile",     s:gui08, s:gui00,  s:cterm08, s:cterm00, "", "")
 call <sid>hi("DiffNewFile",  s:gui0B, s:gui00,  s:cterm0B, s:cterm00, "", "")
@@ -233,10 +247,10 @@ call <sid>hi("gitcommitDiscardedFile",  s:gui08, "", s:cterm08, "", "bold", "")
 call <sid>hi("gitcommitSelectedFile",   s:gui0B, "", s:cterm0B, "", "bold", "")
 
 " GitGutter highlighting
-call <sid>hi("GitGutterAdd",     s:gui0B, s:gui01, s:cterm0B, s:cterm01, "", "")
-call <sid>hi("GitGutterChange",  s:gui0D, s:gui01, s:cterm0D, s:cterm01, "", "")
-call <sid>hi("GitGutterDelete",  s:gui08, s:gui01, s:cterm08, s:cterm01, "", "")
-call <sid>hi("GitGutterChangeDelete",  s:gui0E, s:gui01, s:cterm0E, s:cterm01, "", "")
+call <sid>hi("GitGutterAdd",     s:gui0B, s:gui00, s:cterm0B, s:cterm01, "", "")
+call <sid>hi("GitGutterChange",  s:gui0D, s:gui00, s:cterm0D, s:cterm01, "", "")
+call <sid>hi("GitGutterDelete",  s:gui08, s:gui00, s:cterm08, s:cterm01, "", "")
+call <sid>hi("GitGutterChangeDelete",  s:gui0E, s:gui00, s:cterm0E, s:cterm01, "", "")
 
 " HTML highlighting
 call <sid>hi("htmlBold",    s:gui0A, "", s:cterm0A, "", "", "")
@@ -291,10 +305,27 @@ call <sid>hi("phpComparison",      s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("phpParent",          s:gui05, "", s:cterm05, "", "", "")
 
 " Python highlighting
-call <sid>hi("pythonOperator",  s:gui0E, "", s:cterm0E, "", "", "")
-call <sid>hi("pythonRepeat",    s:gui0E, "", s:cterm0E, "", "", "")
-call <sid>hi("pythonInclude",   s:gui0E, "", s:cterm0E, "", "", "")
-call <sid>hi("pythonStatement", s:gui0E, "", s:cterm0E, "", "", "")
+call <sid>hi("pythonOperator",            s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonExtraOperator",       s:broRED0, "", "", "", "", "")
+call <sid>hi("pythonRepeat",              s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonConditional",         s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonInclude",             s:broRED0, "", "", "", "bold", "")
+call <sid>hi("pythonTodo",                s:broRED0, "", "", "", "", "")
+call <sid>hi("pythonStatement",           s:broBLUE, "", "", "", "", "")
+call <sid>hi("pythonString",              s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonQuotes",              s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonTripleQuotes",        s:broYELLOW, "", "", "", "", "")
+call <sid>hi("pythonComment",             s:broGRAY, "", "", "", "italic", "")
+call <sid>hi("pythonSelf",                s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonDecorator",           s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonClass",               s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonClassVars",           s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonClassParameters",     s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonFunction",            s:broGREEN, "", "", "", "", "")
+call <sid>hi("pythonFunctionVars",        s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonFunctionParameters",  s:broORANGE, "", "", "", "", "")
+call <sid>hi("pythonBuiltin",             s:broBLUE, "", "", "", "bold", "")
+call <sid>hi("pythonNumber",              s:broPURPLE, "", "", "", "", "")
 
 " Ruby highlighting
 call <sid>hi("rubyAttribute",               s:gui0D, "", s:cterm0D, "", "", "")
