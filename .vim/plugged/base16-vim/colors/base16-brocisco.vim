@@ -15,30 +15,29 @@ if !has('gui_running')
 endif
 
 " GUI color definitions
-let s:gui00 = "181818"
+let s:gui00 = "181818" " black
 let s:gui01 = "282828"
 let s:gui02 = "383838"
 let s:gui03 = "585858"
 let s:gui04 = "b8b8b8"
 let s:gui05 = "d8d8d8"
 let s:gui06 = "e8e8e8"
-let s:gui07 = "f8f8f8"
-let s:gui08 = "ab4642"
-let s:gui09 = "dc9656"
-let s:gui0A = "f7ca88"
-let s:gui0B = "a1b56c"
-let s:gui0C = "86c1b9"
-let s:gui0D = "7cafc2"
-let s:gui0E = "ba8baf"
-let s:gui0F = "a16946"
-
+let s:gui07 = "D7DADB" " white
+let s:gui08 = "EB5F59" " red
+let s:gui09 = "D5803A" " orange
+let s:gui0A = "D5B240" " orange-yellow
+let s:gui0B = "64C87A" " green
+let s:gui0C = "59E5EB" " blue-magenta
+let s:gui0D = "4A8CC6" " blue
+let s:gui0E = "6369AC" " purple-pinky
+let s:gui0F = "D5733A" " orange-brown
 
 " BRO
 let s:broRED0     = "EB5F59"
 let s:broRED1     = "BF4F40"
 let s:broRED2     = "C77838"
 let s:broWHITE    = "D7DADB"
-let s:broBLACK    = "191919"
+let s:broBLACK    = "181818"
 let s:broBLUE     = "4A8CC6"
 let s:broGREEN    = "64C87A"
 let s:broORANGE   = "D5803A"
