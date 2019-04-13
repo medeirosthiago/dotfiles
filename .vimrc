@@ -80,7 +80,7 @@ if has("mac") || has("gui_macvim") || has("gui_mac")
   " absolute path  (/something/src/foo.txt)
   nmap <leader>cap :let @*=expand("%:p")<CR>
   " filename       (foo.txt)
-  nmap <leader>cf :let @*=expand("%:t")<CR>
+  nmap <leader>cfi :let @*=expand("%:t")<CR>
   " directory name (/something/src)
   nmap <leader>cd :let @*=expand("%:p:h")<CR>
 endif
@@ -91,7 +91,7 @@ if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
   " absolute path (/something/src/foo.txt)
   nmap <leader>cap :let @+=expand("%:p")<CR>
   " filename (foo.txt)
-  nmap <leader>cf :let @+=expand("%:t")<CR>
+  nmap <leader>cfi :let @+=expand("%:t")<CR>
   " directory name (/something/src)
   nmap <leader>cd :let @+=expand("%:p:h")<CR>
 endif
