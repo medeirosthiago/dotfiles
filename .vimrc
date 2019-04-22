@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'davidhalter/jedi-vim'
@@ -73,6 +74,8 @@ nmap <leader>BB :set nowrap linebreak tw=99<CR>
 nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
 nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
 nmap <leader>cf :call Flake8()<CR>
+nmap <leader>os :Obsession<CR>
+nmap <leader>od :Obsession!<CR>
 
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path  (src/foo.txt)
@@ -192,6 +195,9 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 " git-gutter
 set updatetime=100
