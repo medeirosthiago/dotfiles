@@ -26,6 +26,7 @@ Plug 'tpope/vim-obsession'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'davidhalter/jedi-vim'
 Plug 'kh3phr3n/python-syntax'
@@ -53,7 +54,7 @@ nmap <leader>ee :quit<CR>
 nmap <Leader>E :qa!<CR>
 nmap <Leader>N :NERDTreeToggle<CR>
 nmap <Leader>F :NERDTreeFind<CR>
-" nmap <C-M> :PrevimOpen<CR>
+nmap <leader>tb :ToggleBlameLine<CR>
 nmap <Leader>t :TagbarToggle<CR>
 nmap <Leader>tj :TagbarOpen j<CR>
 nmap <leader>fw :FixWhitespace<CR>
@@ -61,14 +62,7 @@ nmap <leader>ez :e! ~/.zshrc<CR>
 nmap <leader>ev :e! ~/.vimrc<CR>
 nmap <leader>et :e! ~/.tmux.conf<CR>
 nmap <leader>no :nohlsearch<CR>
-nmap <leader>re :edit<CR>
 nmap <leader>gh :Dash<CR>
-nmap <leader>T :enew<CR>
-nmap <leader>= :bnext<CR>
-nmap <leader>- :bprevious<CR>
-nmap <leader>bq :b#<bar>bd#<CR>
-nmap <leader>bl :ls<CR>
-nmap <leader>bw :%bwipeout<CR>
 nmap <leader>B :set wrap linebreak tw=0<CR>
 nmap <leader>BB :set nowrap linebreak tw=99<CR>
 nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
@@ -76,6 +70,16 @@ nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
 nmap <leader>cf :call Flake8()<CR>
 nmap <leader>os :Obsession<CR>
 nmap <leader>od :Obsession!<CR>
+
+" buffers
+nmap <leader>= :bnext<CR>
+nmap <leader>- :bprevious<CR>
+nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bd :bp <BAR> bw #<CR>
+nmap <leader>bl :ls<CR>
+nmap <leader>T :enew<CR>
+nmap <leader>re :edit<CR>
+nmap <leader>bw :%bwipeout<CR>
 
 if has("mac") || has("gui_macvim") || has("gui_mac")
   " relative path  (src/foo.txt)
@@ -111,6 +115,7 @@ vnoremap > >gv
 set hidden
 
 set undolevels=1000
+set history=1000
 
 set nobackup
 set nowritebackup
@@ -199,6 +204,14 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
+" open nerdtree when initiating vim with a path
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
+
+" does not open files/buffers in nerdtree
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" | b# | endif
+
+
 " git-gutter
 set updatetime=100
 let g:gitgutter_realtime=1
@@ -274,6 +287,10 @@ augroup PrevimSettings
 augroup END
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
+
+highlight htmlBold gui=bold
+highlight htmlItalic gui=italic
+
 
 " zoom:
 nmap <C-W>z <Plug>(zoom-toggle)
