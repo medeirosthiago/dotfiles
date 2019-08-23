@@ -33,6 +33,8 @@ Plug 'kh3phr3n/python-syntax'
 Plug 'nvie/vim-flake8'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'previm/previm'
+Plug 'segeljakt/vim-silicon'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -40,10 +42,13 @@ call plug#end()
 " VIM SETUP
 
 set clipboard=unnamed
+set nocompatible
 filetype plugin indent on
 syntax on
 set fileencoding=utf-8
 set mouse=a
+
+runtime macros/matchit.vim
 
 autocmd! bufwritepost .vimrc source %
 
@@ -171,9 +176,10 @@ set tags=tags
 set termguicolors
 
 " Source file with theme setting
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
-endif
+" if filereadable(expand("~/.vimrc_background"))
+"   source ~/.vimrc_background
+" endif
+colorscheme nord
 
 " PLUGIN SETUP
 
@@ -209,7 +215,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
 
 " does not open files/buffers in nerdtree
-autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" | b# | endif
+" autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" | b# | endif
 
 
 " git-gutter
@@ -217,7 +223,7 @@ set updatetime=100
 let g:gitgutter_realtime=1
 
 " airline
-let g:airline_theme='chico_airline'
+let g:airline_theme='chico_nord_airline'
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -236,7 +242,7 @@ let g:airline#extensions#default#layout = [
       \ [ 'a', 'b', 'c' ],
       \ ['error', 'warning', 'w', 'x', 'y', 'z']
       \ ]
-" let g:airline_section_w = '%{ObsessionStatus()}'
+let g:airline_section_w = '%{ObsessionStatus()}'
 let g:airline_section_z = '%3p%% %l %c'
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_left_sep = ''
