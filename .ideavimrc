@@ -7,8 +7,6 @@ set relativenumber
 set undolevels=1000
 set history=1000
 set showmode
-
-set relativenumber
 set clipboard=unnamed
 
 vnoremap < <gv
@@ -19,3 +17,11 @@ nmap <leader>no :nohlsearch<CR>
 " builtin emulated plugins
 set surround
 set commentary
+
+" custom maps
+nmap ]c :action VcsShowNextChangeMarker<CR>
+nmap [c :action VcsShowPrevChangeMarker<CR>
+nmap <leader>hp :action VcsShowCurrentChangeMarker<CR>
+nmap <leader>hu :action Vcs.RollbackChangedLines<CR>
+nmap <leader>gs :action Vcs.Show.Local.Changes<CR>
+map <leader>gh :action Github.Open.In.Browser<CR>
