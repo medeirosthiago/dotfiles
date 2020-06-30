@@ -1,80 +1,59 @@
+# oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="pizza"
-
-plugins=(git brew tmux python pip django chucknorris history docker thefuck taskwarrior)
-
+ZSH_THEME="mahalo"
+plugins=(git brew python history docker tmux thefuck)
 source $ZSH/oh-my-zsh.sh
+
+# starship
+# eval "$(starship init zsh)"
+
+# export ZPLUG_HOME=/usr/local/opt/zplug
+# source $ZPLUG_HOME/init.zsh
+# zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+# zplug "plugins/git",   from:oh-my-zsh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=nvim
+export PATH="$PATH:$HOME/.local/bin"
 
-export PATH="/usr/local/bin:$PATH"
+# alias
+alias cat="bat"
+export BAT_THEME="Nord"
 
+alias vim="\nvim"
+alias vi="\vim"
 
-# ALIAS
-alias source-apply="source ~/.zshrc"
-alias vim=nvim
-# alias to fix a lot of python shims on homebrew
-alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
-alias ctags="`brew --prefix`/bin/ctags"
-alias cat=bat
-alias dark=base16_cisco
-alias light=base16_cisco-light
-alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-
-# PYTHON
-export WORKON_HOME=$HOME/.ve
-export PROJECT_HOME=$HOME/repos
-
-export PATH="$HOME/.pyenv/bin:$PATH"
+# python
+export PYENV_ROOT="$(pyenv root)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-# pyenv virtualenvwrapper_lazy
 
 eval "$(direnv hook zsh)"
+eval "$(thefuck --alias)"
 
-# pyenv setup to avoid conflicts
-if [ -n "$PYENV_COMMAND" ] && [ ! -x "$PYENV_COMMAND_PATH" ]; then
-  versions=($(pyenv-whence "${PYENV_COMMAND}" 2>/dev/null || true))
-  if [ -n "${versions}" ]; then
-    if [ "${#versions[@]}" -gt 1 ]; then
-      echo "pyenv-implicit: found multiple ${PYENV_COMMAND} in pyenv. Use version ${versions[0]}." 1>&2
-    fi
-    PYENV_COMMAND_PATH="${PYENV_ROOT}/versions/${versions[0]}/bin/${PYENV_COMMAND}"
-  fi
-fi
-
-# apply base16 script
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# setting terminal color
-# TODO add if when changing the color
-echo -e "\033]6;1;bg;red;brightness;24\a"
-echo -e "\033]6;1;bg;green;brightness;24\a"
-echo -e "\033]6;1;bg;blue;brightness;24\a"
-
-# apply fzf script
+# fuzzy search
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='
+    --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+    --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
+'
 
-# viclean similar to pyclean to clean Obsession
-function viclean() {
-    ZSH_VICLEAN_PLACES=${*:-'.'}
-    find ${ZSH_VICLEAN_PLACES} -type f -name "Session.vim" -delete
-}
+# edit cli with vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^x' edit-command-line
 
-# pytestclean similar to pyclean to clean pytest cache
-function pytestclean() {
-    ZSH_VICLEAN_PLACES=${*:-'.'}
-    find ${ZSH_VICLEAN_PLACES} -type d -name ".pytest_cache" -exec rm -rf {} \;
-}
 
-# no idea
-if [ -r ~/.not-public ]
-then
-    source ~/.not-public
-fi
+
+# zplug "~/.zsh", from:local
+
+# # Install plugins if there are plugins that have not been installed
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
+
+# # Then, source plugins and add commands to $PATH
+# zplug load --verbose
