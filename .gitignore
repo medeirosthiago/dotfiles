@@ -1,3 +1,10 @@
-tags
-Session.vim
+.editorconfig
 .python-version
+.vscode/
+tags*
+Session.vim
+.idea/
+.envrc
+.DS_Store
+.venv/
+*egg-info
