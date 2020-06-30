@@ -1,51 +1,50 @@
-filetype off
-
 
 " PLUGINS
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'majutsushi/tagbar'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'chriskempson/base16-vim'
-Plug 'rizzatti/dash.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
+Plug 'lilydjwg/colorizer'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-unimpaired'
-Plug 'Raimondi/delimitMate'
-Plug 'junegunn/fzf', { 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-obsession'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'airblade/vim-gitgutter'
-Plug 'tveskag/nvim-blame-line'
+Plug 'tpope/vim-dadbod'
+
+Plug 'Raimondi/delimitMate'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'godlygeek/tabular'
+
 Plug 'davidhalter/jedi-vim'
-Plug 'kh3phr3n/python-syntax'
 Plug 'nvie/vim-flake8'
-Plug 'dhruvasagar/vim-zoom'
-Plug 'previm/previm'
-Plug 'segeljakt/vim-silicon'
-Plug 'arcticicestudio/nord-vim'
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
 
+
 " VIM SETUP
 
-set clipboard=unnamed
+syntax enable
+set termguicolors
+set clipboard+=unnamedplus
 set nocompatible
-filetype plugin indent on
-syntax on
-set fileencoding=utf-8
+" filetype plugin indent on
+" syntax enable
+" set fileencoding=utf-8
 set mouse=a
 
 runtime macros/matchit.vim
@@ -54,22 +53,36 @@ autocmd! bufwritepost .vimrc source %
 
 let mapleader = " "
 
-nmap <C-S> :update<CR>
-nmap <leader>ee :quit<CR>
-nmap <Leader>E :qa!<CR>
-nmap <Leader>N :NERDTreeToggle<CR>
-nmap <Leader>F :NERDTreeFind<CR>
-nmap <leader>tb :ToggleBlameLine<CR>
-nmap <Leader>t :TagbarToggle<CR>
-nmap <Leader>tj :TagbarOpen j<CR>
+set guicursor=	" change cursor on neovim
+set ignorecase
+set smartcase
+set expandtab
+set shiftround      " round indent to a multiple of 'shiftwidth'
+set number
+set relativenumber
+set nowrap          " don't automatically wrap on load
+set fo-=t           " don't automatically wrap text when typing
+set showmatch
+set gdefault
+set hidden
+set tags=tags
+
+colorscheme nord
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+
+
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 30
+
+
 nmap <leader>fw :FixWhitespace<CR>
-nmap <leader>ez :e! ~/.zshrc<CR>
-nmap <leader>ev :e! ~/.vimrc<CR>
-nmap <leader>et :e! ~/.tmux.conf<CR>
 nmap <leader>no :nohlsearch<CR>
 nmap <leader>gh :Dash<CR>
-nmap <leader>B :set wrap linebreak tw=0<CR>
-nmap <leader>BB :set nowrap linebreak tw=99<CR>
+" nmap <leader>B :set wrap linebreak tw=0<CR>
+" nmap <leader>BB :set nowrap linebreak tw=99<CR>
 nmap <leader>t2 :set tabstop=2 shiftwidth=2<CR>
 nmap <leader>t4 :set tabstop=4 shiftwidth=4<CR>
 nmap <leader>cf :call Flake8()<CR>
@@ -81,32 +94,7 @@ nmap <leader>= :bnext<CR>
 nmap <leader>- :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bd :bp <BAR> bw #<CR>
-nmap <leader>bl :ls<CR>
-nmap <leader>T :enew<CR>
-nmap <leader>re :edit<CR>
 nmap <leader>bw :%bwipeout<CR>
-
-if has("mac") || has("gui_macvim") || has("gui_mac")
-  " relative path  (src/foo.txt)
-  nmap <leader>cp :let @*=expand("%")<CR>
-  " absolute path  (/something/src/foo.txt)
-  nmap <leader>cap :let @*=expand("%:p")<CR>
-  " filename       (foo.txt)
-  nmap <leader>cfi :let @*=expand("%:t")<CR>
-  " directory name (/something/src)
-  nmap <leader>cd :let @*=expand("%:p:h")<CR>
-endif
-
-if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
-  " relative path (src/foo.txt)
-  nmap <leader>cp :let @+=expand("%")<CR>
-  " absolute path (/something/src/foo.txt)
-  nmap <leader>cap :let @+=expand("%:p")<CR>
-  " filename (foo.txt)
-  nmap <leader>cfi :let @+=expand("%:t")<CR>
-  " directory name (/something/src)
-  nmap <leader>cd :let @+=expand("%:p:h")<CR>
-endif
 
 " json beautify
 nmap <leader>js :%!python -m json.tool<CR>
@@ -115,9 +103,6 @@ vmap <leader>ht :!tidy -q -i --show-errors 0<CR>
 
 vnoremap < <gv
 vnoremap > >gv
-
-" allows hidden modified buffers
-set hidden
 
 set undolevels=1000
 set history=1000
@@ -128,15 +113,8 @@ set noswapfile
 
 " toggle invisible chars
 nmap <leader>L :set list!<CR>
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " ~ NEOVIM
+" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " ~ NEOVIM
 set showbreak=↪
-
-set relativenumber
-set guicursor=	" change cursor on neovim
-
-" set incsearch		" search as characters are entered ~ NEOVIM
-set ignorecase
-set smartcase
 
 " indent settings
 au BufNewFile,BufRead *.sql,*.py
@@ -149,81 +127,44 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \| set softtabstop=2
     \| set shiftwidth=2
 
-set expandtab
-set shiftround      " round indent to a multiple of 'shiftwidth'
-set number
-set nowrap          " don't automatically wrap on load
-set fo-=t           " don't automatically wrap text when typing
-set showmatch
-set gdefault
+" windowing
 set winheight=5
 set winminheight=5
 set winheight=999
-
-" escape terminal mode
-tnoremap <Esc> <C-\><C-n>
-autocmd BufEnter term://* startinsert
 
 " enable folding
 set foldmethod=indent
 set foldlevel=99
 
-set tags=tags
+" escape terminal mode
+tnoremap <Esc> <C-\><C-n>
+autocmd BufEnter term://* startinsert
+
+" python
+" let g:python_host_prog = '/Users/t.medeiros/.pyenv/versions/tools2/bin/python'
+let g:python3_host_prog = '$HOME/.pyenv/versions/tools/bin/python'
 
 
-" COLORS
-
-set termguicolors
-
-" Source file with theme setting
-" if filereadable(expand("~/.vimrc_background"))
-"   source ~/.vimrc_background
-" endif
-colorscheme nord
 
 " PLUGIN SETUP
 
 " fugitive
 nmap <leader>gs :Gstatus<CR><C-w>25+
 
-" python
-let g:python_host_prog = '/Users/t.medeiros/.pyenv/versions/tools2/bin/python'
-let g:python3_host_prog = '/Users/t.medeiros/.pyenv/versions/tools3/bin/python'
 
-let python_highlight_all = 1
-
-" nerdtree
-let NERDTreeWinSize=50
-let NERDTreeShowHidden=1
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
-
-" open nerdtree when initiating vim with a path
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | wincmd p | ene | exe 'NERDTree' argv()[0] | endif
-
-" does not open files/buffers in nerdtree
-" autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" | b# | endif
+" fzf:
+let g:fzf_buffers_jump = 0
+noremap <C-F> :FZF<CR>
+noremap <C-B> :Buffers<CR>
 
 
 " git-gutter
 set updatetime=100
 let g:gitgutter_realtime=1
 
+
 " airline
-let g:airline_theme='chico_nord_airline'
+" let g:airline_theme='chico_nord_airline'
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -244,15 +185,16 @@ let g:airline#extensions#default#layout = [
       \ ]
 let g:airline_section_w = '%{ObsessionStatus()}'
 let g:airline_section_z = '%3p%% %l %c'
-let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-" tabline
+
+" buffers
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0 " --> AUTOMATE THIS (shortcut)
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_idx_format = {
@@ -271,38 +213,18 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 " switch buffers maps
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-" webdevicons:
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_vimfiler = 1
-
-" fzf:
-let g:fzf_buffers_jump = 0
-noremap <C-F> :FZF<CR>
-noremap <C-B> :Buffers<CR>
-
-" tagbar:
-let g:tagbar_sort = 0
-
-" previm
-let g:previm_open_cmd = 'open -a Firefox'
-
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
-
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sql']
-
-highlight htmlBold gui=bold
-highlight htmlItalic gui=italic
+" tabline
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_count = 2
+let g:airline#extensions#tabline#tab_min_count = 2
 
 
-" zoom:
-nmap <C-W>z <Plug>(zoom-toggle)
 
+" SCRIPTS AND HACKS
 
-" SCRIPTS
+" max line-length
+set colorcolumn=99
+hi ColorColumn guifg=#b48ead guibg=background
 
 " increase numbers
 function! Incr()
