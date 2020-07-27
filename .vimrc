@@ -5,7 +5,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+Plug 'connorholyday/vim-snazzy'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -28,6 +31,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'godlygeek/tabular'
 
+Plug 'Shougo/deoplete.nvim'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 Plug 'nvie/vim-flake8'
 Plug 'rizzatti/dash.vim'
@@ -67,7 +72,8 @@ set gdefault
 set hidden
 set tags=tags
 
-colorscheme nord
+" colorscheme nord
+colorscheme snazzy
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
@@ -113,7 +119,7 @@ set noswapfile
 
 " toggle invisible chars
 nmap <leader>L :set list!<CR>
-" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " ~ NEOVIM
+" set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 " indent settings
@@ -164,7 +170,7 @@ let g:gitgutter_realtime=1
 
 
 " airline
-" let g:airline_theme='chico_nord_airline'
+let g:airline_theme='base16_snazzy'
 let g:airline_powerline_fonts = 1
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -222,10 +228,6 @@ let g:airline#extensions#tabline#tab_min_count = 2
 
 " SCRIPTS AND HACKS
 
-" max line-length
-set colorcolumn=99
-hi ColorColumn guifg=#b48ead guibg=background
-
 " increase numbers
 function! Incr()
   let a = line('.') - line("'<")
@@ -246,3 +248,13 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<CR>
+
+"python with virtualenv support
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"  project_base_dir = os.environ['VIRTUAL_ENV']
+"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"  execfile(activate_this, dict(__file__=activate_this))
+"EOF
