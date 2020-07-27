@@ -7,4 +7,9 @@ Session.vim
 .envrc
 .DS_Store
 .venv/
+*.key
 *egg-info
+
+
+poetry.lock
+pyproject.toml
