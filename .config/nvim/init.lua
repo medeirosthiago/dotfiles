@@ -6,3 +6,5 @@ vim.cmd('source $HOME/.config/nvim/allgemein/functions.vim')
 require('plugins.lsp')
 require('plugins.telescope')
 require('plugins.compe')
+
+if pcall(require, 'localrc') then require('localrc').load() end

@@ -41,4 +41,11 @@ M.search_notes = function()
     })
 end
 
+M.search_custom = function(custom_path, title)
+    require("telescope.builtin").find_files({
+        prompt_title = "< " .. title .. " >",
+        cwd = custom_path,
+    })
+end
+
 return M
