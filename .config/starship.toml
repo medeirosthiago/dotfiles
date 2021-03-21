@@ -1,9 +1,10 @@
 [character]
-symbol = " "
+success_symbol = "[ ](bold green)"
+error_symbol = "[ ](bold red)"
 
 [aws]
 symbol = " "
-disabled = true
+format = '[($symbol$profile )]($style)'
 
 [battery]
 full_symbol = ""
@@ -21,6 +22,11 @@ symbol = " "
 
 [elm]
 symbol = " "
+
+[gcloud]
+symbol = " "
+format = '[($symbol$project )]($style)'
+disabled = true
 
 [git_branch]
 symbol = " "
@@ -61,6 +67,8 @@ symbol = " "
 
 [python]
 symbol = " "
+format = "[${symbol}${pyenv_prefix}${version}( \\($virtualenv\\))]($style) "
+style = "italic yellow"
 
 [ruby]
 symbol = " "

@@ -17,6 +17,7 @@ nmap <leader>no :nohlsearch<CR>
 " builtin emulated plugins
 set surround
 set commentary
+set highlightedyank
 
 " custom maps
 nmap ]c :action VcsShowNextChangeMarker<CR>
