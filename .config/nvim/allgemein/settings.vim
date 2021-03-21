@@ -46,6 +46,7 @@ augroup end
 let g:netrw_altfile = 1
 autocmd bufwritepost .init.vim source %
 autocmd VimEnter * call ToggleHiddenAll()
+autocmd BufWinEnter * echo @%
 
 "TODO: what is this?
 " filetype plugin indent on

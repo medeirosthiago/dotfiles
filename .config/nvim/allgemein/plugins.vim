@@ -3,25 +3,21 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'airblade/vim-gitgutter'
 
-" Themes/colors
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'sts10/vim-pink-moon'
 Plug 'chriskempson/base16-vim'
 
-" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'sheerun/vim-polyglot'
-Plug 'ryanoasis/vim-devicons'
 Plug 'lilydjwg/colorizer'
-
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
+Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'tpope/vim-dispatch'  "TODO: am I using this?
 Plug 'tpope/vim-fugitive'
@@ -36,9 +32,6 @@ Plug 'tpope/vim-obsession'
 " Plug 'tpope/vim-dotenv'  "TODO: am I using this?
 
 Plug 'rbong/vim-flog'
-
-Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
 
 Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
