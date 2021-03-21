@@ -10,6 +10,12 @@ Session.vim
 *.key
 *egg-info
 
+.vim/
+
+querious/
 
 poetry.lock
 pyproject.toml
+
+hack-*
+.netrwhist
