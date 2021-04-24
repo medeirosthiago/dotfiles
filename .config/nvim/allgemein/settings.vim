@@ -1,4 +1,3 @@
-
 syntax enable
 let mapleader = " "
 set termguicolors
@@ -27,7 +26,6 @@ set noswapfile
 set showbreak=↪
 set foldmethod=indent
 set foldlevel=99
-
 set completeopt=menuone,noselect
 
 " set inccommand=split  " replace while substituting things
@@ -44,7 +42,6 @@ augroup netrw_buf_hidden_fix  "TODO: grok this
 augroup end
 
 let g:netrw_altfile = 1
-autocmd bufwritepost .init.vim source %
 autocmd VimEnter * call ToggleHiddenAll()
 autocmd BufWinEnter * echo @%
 
@@ -68,15 +65,14 @@ nmap <leader>os :Obsession<CR>
 nmap <leader>od :Obsession!<CR>
 nmap <leader>td :r!date<CR>
 nmap <leader>pyc :!pycharm %<CR>
-nmap <leader>= :bnext<CR>
-nmap <leader>- :bprevious<CR>
 nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bd :bp <BAR> bw #<CR>
 nmap <leader>bw :%bwipeout<CR>
 nmap <leader>js :%!python -m json.tool<CR>
 vmap <leader>ht :!tidy -q -i --show-errors 0<CR>
 nmap <leader>cd :lcd %:h<CR>
-nmap <C-s> :Git rev-parse --abbrev-ref HEAD<CR>
+nmap <leader>ap :source %<CR>
+nmap <leader>ft :FloatermToggle<CR>
 
 nmap <leader>L :set list!<CR>
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
@@ -86,21 +82,32 @@ vnoremap > >gv
 
 let g:python3_host_prog = '$HOME/.pyenv/versions/tools/bin/python'
 
+
+
+" Plugins config
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_vimfiler = 1
 
 let g:gitgutter_realtime=1
 let g:gitgutter_set_sign_backgrounds=1
 
-nnoremap <C-F> <cmd>Telescope find_files<cr>
-nnoremap <C-P> <cmd>Telescope live_grep<cr>
-nnoremap <C-B> <cmd>Telescope buffers<cr>
-nnoremap <leader>df :lua require("plugins.telescope").search_dotfiles()<CR>
-nnoremap <leader>nt :lua require("plugins.telescope").search_notes()<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>lf <cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>
+nnoremap <leader>le <cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>
+nnoremap <leader>gb <cmd>lua require("telescope.builtin").git_branches()<cr>
+nnoremap <leader>gc <cmd>lua require("telescope.builtin").git_bcommits()<cr>
+nnoremap <leader>gp <cmd>lua require('telescope').extensions.gh.pull_request()<cr>
+
+nnoremap <leader>df <cmd>lua require("plugins.telescope").search_dotfiles()<cr>
+nnoremap <leader>nt <cmd>lua require("plugins.telescope").search_notes()<cr>
 
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-" inoremap <silent><expr> <C-P>     compe#scroll({ 'delta': +4 })
-" inoremap <silent><expr> <C-N>     compe#scroll({ 'delta': -4 })
 
+let g:floaterm_title = " shell "
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.7
+hi FloatermBorder guibg=#2a2e38 guifg=#F0FDFF

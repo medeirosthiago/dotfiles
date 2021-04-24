@@ -7,4 +7,6 @@ require('plugins.lsp')
 require('plugins.telescope')
 require('plugins.compe')
 
+require('telescope').load_extension('gh')
+
 if pcall(require, 'localrc') then require('localrc').load() end

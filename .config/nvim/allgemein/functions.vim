@@ -18,7 +18,8 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-" nnoremap <C-n> :call NumberToggle()<CR>
+nnoremap <C-n> :call NumberToggle()<CR>
+
 
 " hidding things
 let s:hidden_all = 0
@@ -27,7 +28,7 @@ function! ToggleHiddenAll()
         let s:hidden_all = 1
         " set noshowmode
         set noruler
-        set laststatus=0
+        set laststatus=1
         set noshowcmd
     else
         let s:hidden_all = 0
@@ -37,5 +38,12 @@ function! ToggleHiddenAll()
         set showcmd
     endif
 endfunction
-
 nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
+
+" define line highlight color
+" highlight the current line
+" clear all the highlighted lines
+highlight LineHighlight guifg=#6F98B3 guibg=#FDF8CE
+nnoremap <leader>lh :call matchadd('LineHighlight', '\%'.line('.').'l')<CR>
+nnoremap <leader>lc :call clearmatches()<CR>

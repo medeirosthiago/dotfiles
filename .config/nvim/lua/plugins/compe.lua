@@ -2,7 +2,7 @@ vim.o.completeopt = "menuone,noselect"
 
 require'compe'.setup {
   enabled = true;
-  autocomplete = false;
+  autocomplete = true;
   debug = false;
   min_length = 1;
   preselect = 'enable';
@@ -22,7 +22,7 @@ require'compe'.setup {
     nvim_lua = true;
     -- vsnip = true;
     spell = true;
-    tags = true;
+    -- tags = true;
     -- snippets_nvim = true;
     -- treesitter = true;
   };

@@ -19,3 +19,4 @@ pyproject.toml
 
 hack-*
 .netrwhist
+localrc.lua

@@ -47,6 +47,7 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 # export TERM_COLOR_THEME="dracula"
 export PATH="$PATH:$HOME/.local/bin"
+export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 # alias
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -80,6 +81,7 @@ alias zathura="/usr/local/opt/zathura/bin/zathura"
 export PYENV_ROOT="$(pyenv root)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 eval "$(direnv hook zsh)"
 eval "$(thefuck --alias)"
@@ -105,12 +107,13 @@ export PATH="$HOME/src/clones/git-fuzzy/bin:$PATH"
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^x' edit-command-line
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/t.medeiros/repos/draft/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/t.medeiros/repos/draft/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/t.medeiros/repos/draft/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/t.medeiros/repos/draft/google-cloud-sdk/completion.zsh.inc'; fi
-
 # terraform
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.12.24/terraform terraform
+
+# The next line updates PATH for the Google Cloud SDK.
+GCLOUD_PATH="$HOME/repos/misc-draft/google-cloud-sdk"
+if [ -f "${GCLOUD_PATH}/path.zsh.inc" ]; then . "${GCLOUD_PATH}/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "${GCLOUD_PATH}/completion.zsh.inc" ]; then . "${GCLOUD_PATH}/completion.zsh.inc"; fi
