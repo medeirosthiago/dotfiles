@@ -6,6 +6,7 @@ vim.cmd('source $HOME/.config/nvim/allgemein/functions.vim')
 require('plugins.lsp')
 require('plugins.telescope')
 require('plugins.compe')
+require('plugins.treesitter')
 
 require('telescope').load_extension('gh')
 

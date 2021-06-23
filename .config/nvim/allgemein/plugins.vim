@@ -5,19 +5,22 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'sts10/vim-pink-moon'
-Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
-Plug '~/src/forks/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Plug '~/src/forks/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ThePrimeagen/harpoon'
+
 
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -33,7 +36,6 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-dadbod'
 
 Plug 'rbong/vim-flog'
-Plug 'voldikss/vim-floaterm'
 
 Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'

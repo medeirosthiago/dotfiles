@@ -53,6 +53,7 @@ autocmd BufWinEnter * echo @%
 runtime macros/matchit.vim  "TODO: what is this?
 
 colorscheme pink-moon
+" colorscheme dracula
 
 nmap <leader>gs :Gstatus<CR><C-w>30+
 nmap <leader>fw :FixWhitespace<CR>
