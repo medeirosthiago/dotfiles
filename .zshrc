@@ -26,6 +26,9 @@ export SHOW_AWS_PROMPT=false
 export TERM='xterm-256color'
 bindkey -e
 
+# hack for macterminal be able to delete-forward
+bindkey "\e[3~" delete-char
+
 # avoid command not found: compdef
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
@@ -45,7 +48,6 @@ export STARSHIP_CONFIG=~/.config/starship.toml
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=nvim
-# export TERM_COLOR_THEME="dracula"
 export PATH="$PATH:$HOME/.local/bin"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
@@ -75,6 +77,7 @@ alias estar="\nvim $HOME/.config/starship.toml"
 alias karabina="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'"
 alias keymac="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile mac"
 alias keymec="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile mec"
+alias keyforty="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile forty"
 alias zathura="/usr/local/opt/zathura/bin/zathura"
 
 # python
