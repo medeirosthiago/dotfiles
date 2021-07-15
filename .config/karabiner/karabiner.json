@@ -564,7 +564,7 @@
                                         }
                                     },
                                     {
-                                        "key_code": "rigth_arrow"
+                                        "key_code": "right_arrow"
                                     }
                                 ],
                                 "type": "basic"
