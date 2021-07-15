@@ -24,7 +24,7 @@ nnoremap <C-n> :call NumberToggle()<CR>
 " hidding things
 let s:hidden_all = 0
 function! ToggleHiddenAll()
-    if s:hidden_all  == 0
+    if s:hidden_all == 0
         let s:hidden_all = 1
         " set noshowmode
         set noruler
@@ -38,7 +38,7 @@ function! ToggleHiddenAll()
         set showcmd
     endif
 endfunction
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
+nnoremap <C-s> :call ToggleHiddenAll()<CR>
 
 
 " define line highlight color
