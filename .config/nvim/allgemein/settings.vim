@@ -14,7 +14,7 @@ set relativenumber
 set updatetime=100
 set linebreak
 set showbreak=↪
-" set nowrap          " don't automatically wrap on load
+set nowrap          " TODO: only wrap .md files
 " set fo-=t           " don't automatically wrap text when typing
 set showmatch
 set gdefault
@@ -75,7 +75,25 @@ vnoremap > >gv
 let g:python3_host_prog = '$HOME/.pyenv/versions/tools/bin/python'
 
 
-" Simple statusline TODO:
+" Simple statusline
+
+function! StatuslineGit()
+  let l:branchname = FugitiveHead()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#Comment#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%M
+set statusline+=%=
+set statusline+=\ %Y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
 
 
 " Plugins config
