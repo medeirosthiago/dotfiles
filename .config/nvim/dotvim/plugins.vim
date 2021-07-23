@@ -7,7 +7,7 @@ Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 Plug 'sts10/vim-pink-moon'
 Plug 'dracula/vim'
 " Plug 'folke/tokyonight.nvim'
-Plug '~/src/tokyonight-nord.nvim'
+Plug '~/.config/nvim/forks/tokyonight-nord.nvim'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
@@ -16,7 +16,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug '~/src/forks/telescope.nvim'
+" Plug '~/.config/nvim/forks/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'neovim/nvim-lspconfig'
@@ -27,7 +27,6 @@ Plug 'folke/trouble.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'ThePrimeagen/harpoon'
-Plug 'karb94/neoscroll.nvim'
 
 Plug 'vimwiki/vimwiki'
 
