@@ -1,4 +1,3 @@
-
 local nvim_lsp = require('lspconfig')
 local on_attach = function(_, bufnr)
   local opts = { noremap=true, silent=true }
@@ -49,6 +48,7 @@ nvim_lsp['dockerls'].setup{
 
 ----
 -- lua: https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
+-- lua-dev.nvim : https://github.com/folke/lua-dev.nvim
 HOME = vim.fn.expand('$HOME')
 
 local sumneko_root_path = ""
@@ -57,51 +57,59 @@ local sumneko_binary = ""
 sumneko_root_path = HOME ..  "/src/clones/lua-language-server"
 sumneko_binary = HOME ..  "/src/clones/lua-language-server/bin/macOS/lua-language-server"
 
-nvim_lsp['sumneko_lua'].setup{
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';')
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'}
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+local luadev = require("lua-dev").setup({
+    library = {vimruntime = true, types = true, plugins = true},
+    lspconfig = {
+        -- capabilities = capabilities,
+        on_attach = on_attach,
+        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+        settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                    -- Setup your lua path
+                    path = vim.split(package.path, ';')
+                },
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {'vim'}
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = {
+                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                    }
+                }
+            }
         }
-      }
     }
-  }
-}
+})
+nvim_lsp['sumneko_lua'].setup(luadev)
+
 
 
 ----
--- python: https://github.com/palantir/python-language-server
-nvim_lsp['pyls'].setup{
+-- python: https://github.com/python-lsp/python-lsp-server
+nvim_lsp['pylsp'].setup{
   on_attach = on_attach,
   settings = {
-    pyls = {
-      -- configurationSources = {"pycodestyle", "flake8"},
+    pylsp = {
+      -- configurationSources = { "flake8" },
       plugins = {
-        yapf = {enabled = true},
+        yapf = {enabled = false},
         pylint = {enabled = false},
         pycodestyle = {enabled = false},
         pyflakes = {enabled = false},
         pydocstyle = {enabled = false},
         flake8 = {enabled = true}
-      }
+      },
+      type = "string"
     }
   }
 }
+
 
 
 ----
