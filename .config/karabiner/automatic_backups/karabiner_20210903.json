@@ -46,6 +46,25 @@
                         "manipulators": [
                             {
                                 "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open 'System/Applications/Utilities/Activity Monitor.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
@@ -103,7 +122,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -153,14 +172,14 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Obsidian.app'"
+                                        "shell_command": "open '/Applications/Notion.app'"
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "s",
+                                    "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -172,7 +191,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Safari.app'"
+                                        "shell_command": "open '/Applications/Google Chrome.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -210,7 +229,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Alacritty.app'"
+                                        "shell_command": "open '/Applications/iTerm.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -605,54 +624,6 @@
                     "ignore": false,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 635,
-                        "vendor_id": 1452
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "grave_accent_and_tilde"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "z"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 615,
-                        "vendor_id": 76
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "grave_accent_and_tilde"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "z"
-                                }
-                            ]
-                        }
-                    ]
                 }
             ],
             "fn_function_keys": [
@@ -815,6 +786,25 @@
                         "manipulators": [
                             {
                                 "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open 'System/Applications/Utilities/Activity Monitor.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "p",
                                     "modifiers": {
                                         "mandatory": [
@@ -872,7 +862,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -922,14 +912,14 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Obsidian.app'"
+                                        "shell_command": "open '/Applications/Notion.app'"
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "s",
+                                    "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -941,7 +931,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Safari.app'"
+                                        "shell_command": "open '/Applications/Google Chrome.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -979,7 +969,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Alacritty.app'"
+                                        "shell_command": "open '/Applications/iTerm.app'"
                                     }
                                 ],
                                 "type": "basic"
