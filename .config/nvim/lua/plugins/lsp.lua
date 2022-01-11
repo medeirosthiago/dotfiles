@@ -94,6 +94,9 @@ nvim_lsp['sumneko_lua'].setup(luadev)
 -- python: https://github.com/python-lsp/python-lsp-server
 nvim_lsp['pylsp'].setup{
   on_attach = on_attach,
+  --[[ on_init = function(client)
+    client.config.settings.python.pythonPath = "..."  -- https://github.com/neovim/nvim-lspconfig/issues/500
+  end, ]]
   settings = {
     pylsp = {
       -- configurationSources = { "flake8" },

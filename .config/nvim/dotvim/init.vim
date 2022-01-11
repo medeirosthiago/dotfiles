@@ -46,6 +46,8 @@ augroup netrw_buf_hidden_fix
 augroup end
 
 let g:netrw_altfile = 1
+let g:netrw_fastbrowse = 0
+autocmd FileType netrw setl bufhidden=wipe
 
 " some remaps hack
 nnoremap Y y$

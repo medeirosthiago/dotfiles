@@ -26,3 +26,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 60})
 augroup END
 
+
+" fzf
+let g:fzf_buffers_jump = 0
+noremap <C-F> :FZF<CR>
+"noremap <C-B> :Buffers<CR>

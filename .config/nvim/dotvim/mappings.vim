@@ -29,6 +29,7 @@ nnoremap <leader>gp <cmd>lua require('telescope').extensions.gh.pull_request()<c
 
 nnoremap <leader>df <cmd>lua require("plugins.telescope").search_dotfiles()<cr>
 nnoremap <leader>nt <cmd>lua require("plugins.telescope").search_notes()<cr>
+nnoremap <leader>qr <cmd>lua require("plugins.telescope").search_query()<cr>
 
 nnoremap <C-B> <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <C-_> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({sorting_strategy='ascending', layout_config={prompt_position='top'}})<cr>

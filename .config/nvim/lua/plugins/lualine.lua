@@ -54,7 +54,7 @@ require'lualine'.setup {
     lualine_b = {
       {'branch', icons_enabled = false},
       'diff',
-      {'diagnostics', sources={'nvim_lsp'}}
+      {'diagnostics', sources={'nvim_diagnostic'}}
     },
     lualine_c = {'filename'},  -- buffers maybe
     lualine_x = {

@@ -53,16 +53,26 @@ M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< .dotfiles >",
         search_dirs = {
-            "$HOME/.config/",
+            "$HOME/.config/nvim",
+            "$HOME/.config/alacritty",
+            "$HOME/.config/karabiner",
             "$HOME/.tmux/",
         },
+    })
+end
+
+
+M.search_query = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< querious >",
+        cwd = "$HOME/repos/querious",
     })
 end
 
 M.search_notes = function()
     require("telescope.builtin").find_files({
         prompt_title = "< notes >",
-        cwd = "$HOME/notes/",
+        cwd = "$HOME/notes/martian",
     })
 end
 
