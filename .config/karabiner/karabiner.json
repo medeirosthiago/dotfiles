@@ -153,7 +153,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Obsidian.app'"
+                                        "shell_command": "open '/Applications/Bear.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -198,7 +198,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "x",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -211,6 +211,25 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/Applications/Alacritty.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/TickTick.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -922,7 +941,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Obsidian.app'"
+                                        "shell_command": "open '/Applications/Bear.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -967,7 +986,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "t",
+                                    "key_code": "x",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -980,6 +999,44 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/Applications/Alacritty.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/TickTick.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_shift"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/TickTick.app'"
                                     }
                                 ],
                                 "type": "basic"
