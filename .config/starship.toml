@@ -1,7 +1,7 @@
 [character]
 format = "$symbol "
-success_symbol = "[ ](bold green)"
-error_symbol = "[ ](bold red)"
+success_symbol = "[ ](bold yellow)"
+error_symbol = "[ ](bold green)"
 
 [aws]
 symbol = " "
