@@ -8,7 +8,7 @@ require('plugins.lsp')
 require('plugins.telescope')
 require('plugins.treesitter')
 require('plugins.lualine')
-require('plugins.harpoon')
+-- require('plugins.harpoon')
 require('plugins.completion')
 require('plugins.misc')
 
@@ -17,6 +17,5 @@ require('telescope').load_extension('fzf')
 -- require('telescope').load_extension('gh')
 -- require('todo-comments').setup {}
 require('lsp-colors').setup {}
-require('gitsigns').setup()
 
 -- if pcall(require, 'localrc') then require('localrc').load() end

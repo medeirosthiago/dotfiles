@@ -1,4 +1,4 @@
-local colors = require("onenord.colors")
+local colors = require("onenord.colors").load()
 
 local onenord_local = {}
 
@@ -44,6 +44,7 @@ require'lualine'.setup {
   options = {
     icons_enabled = true,
     theme = onenord_local,
+    -- theme = 'onenord',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
