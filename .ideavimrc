@@ -3,6 +3,7 @@ let mapleader = " "
 set hlsearch
 set incsearch
 set ignorecase smartcase
+set number
 set relativenumber
 set undolevels=1000
 set history=1000
