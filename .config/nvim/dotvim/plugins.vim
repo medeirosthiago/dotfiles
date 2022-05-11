@@ -18,6 +18,8 @@ Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-cmdline'
 
+Plug 'editorconfig/editorconfig-vim'
+
 Plug 'tpope/vim-dispatch'
 
 Plug 'tpope/vim-rhubarb'
@@ -32,6 +34,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'rhysd/git-messenger.vim'
+Plug 'skanehira/gh.vim'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
@@ -50,6 +53,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'psliwka/vim-smoothie'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " colorscheme

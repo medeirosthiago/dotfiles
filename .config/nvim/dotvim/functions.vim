@@ -7,7 +7,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<CR>
+" nnoremap <C-n> :call NumberToggle()<CR>
 
 
 " hidding things
