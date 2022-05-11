@@ -1,15 +1,17 @@
 local nvim_lsp = require('lspconfig')
-local on_attach = function(_, bufnr)
-  local opts = { noremap=true, silent=true }
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dc', '<Cmd>lua vim.lsp.diagnostic.clear(vim.api.nvim_get_current_buf())<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ds', '<Cmd>lua vim.cmd("e %")<CR>', opts)
+local on_attach = function()
+  -- local opts = { noremap=true, silent=true }
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer=0 })
+  vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, { buffer=0 })
+  vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer=0 })
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer=0 })
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer=0 })
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer=0 })
+  vim.keymap.set("n", "rn", vim.lsp.buf.rename, { buffer=0 })
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer=0 })
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer=0 })
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dc', '<Cmd>lua vim.lsp.diagnostic.clear(vim.api.nvim_get_current_buf())<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ds', '<Cmd>lua vim.cmd("e %")<CR>', opts)
 end
 
 
@@ -26,7 +28,14 @@ nvim_lsp['bashls'].setup{
 
 
 ----
--- json: npm install -g vscode-json-languageserver
+-- go install golang.org/x/tools/gopls@latest
+nvim_lsp['gopls'].setup{
+  on_attach = on_attach
+}
+
+
+----
+-- json: npm i -g vscode-langservers-extracted
 nvim_lsp['jsonls'].setup{
   on_attach = on_attach,
   commands = {
@@ -79,7 +88,8 @@ local luadev = require("lua-dev").setup({
                     -- Make the server aware of Neovim runtime files
                     library = {
                         [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
+                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                        ['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
                     }
                 }
             }
@@ -94,12 +104,9 @@ nvim_lsp['sumneko_lua'].setup(luadev)
 -- python: https://github.com/python-lsp/python-lsp-server
 nvim_lsp['pylsp'].setup{
   on_attach = on_attach,
-  --[[ on_init = function(client)
-    client.config.settings.python.pythonPath = "..."  -- https://github.com/neovim/nvim-lspconfig/issues/500
-  end, ]]
+  root_dir = nvim_lsp.util.root_pattern('.git');
   settings = {
     pylsp = {
-      -- configurationSources = { "flake8" },
       plugins = {
         yapf = {enabled = false},
         pylint = {enabled = false},
@@ -117,8 +124,9 @@ nvim_lsp['pylsp'].setup{
 
 ----
 -- terraform: https://github.com/hashicorp/terraform-ls
+-- brew install hashicorp/tap/terraform-ls
 nvim_lsp['terraformls'].setup{
-  cmd = { "terraform-lsp", "serve" },
+  cmd = { "terraform-ls", "serve" },
   filetypes = { "terraform" },
   on_attach = on_attach
 }
