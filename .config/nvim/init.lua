@@ -19,3 +19,5 @@ require('telescope').load_extension('fzf')
 require('lsp-colors').setup {}
 
 -- if pcall(require, 'localrc') then require('localrc').load() end
+--
+vim.opt.laststatus = 3
