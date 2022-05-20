@@ -31,3 +31,10 @@ augroup END
 let g:fzf_buffers_jump = 0
 noremap <C-F> :FZF<CR>
 "noremap <C-B> :Buffers<CR>
+
+
+" syntax
+augroup dataform_sqlx
+  au!
+  autocmd BufNewFile,BufRead *.sqlx set syntax=sql
+augroup END

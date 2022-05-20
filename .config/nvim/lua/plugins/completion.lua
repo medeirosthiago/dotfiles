@@ -19,6 +19,8 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item()),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item()),
   },
 
   formatting = {

@@ -23,7 +23,7 @@ function! ToggleHiddenAll()
         let s:hidden_all = 0
         " set showmode
         set ruler
-        set laststatus=2
+        set laststatus=3
         set showcmd
     endif
 endfunction

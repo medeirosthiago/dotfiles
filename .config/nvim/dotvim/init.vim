@@ -3,7 +3,6 @@
 syntax enable
 let mapleader = " "
 set termguicolors
-set t_ut=
 set clipboard+=unnamedplus
 set nocompatible
 set mouse=a

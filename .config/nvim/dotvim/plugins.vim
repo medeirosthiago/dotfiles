@@ -3,11 +3,11 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'nvim-lua/popup.nvim'
@@ -34,7 +34,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'rhysd/git-messenger.vim'
-Plug 'skanehira/gh.vim'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'lilydjwg/colorizer'
@@ -53,17 +52,16 @@ Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'psliwka/vim-smoothie'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
-" colorscheme
-" Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
-" Plug 'sts10/vim-pink-moon'
-" Plug 'dracula/vim'
-" Plug 'folke/tokyonight.nvim'
-" Plug '~/.config/nvim/hack/tokyonight-nord.nvim'
-" Plug 'shaunsingh/nord.nvim'
-" Plug 'rebelot/kanagawa.nvim'
+" " colorscheme
+" " Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
+" " Plug 'sts10/vim-pink-moon'
+" " Plug 'dracula/vim'
+" " Plug 'folke/tokyonight.nvim'
+" " Plug '~/.config/nvim/hack/tokyonight-nord.nvim'
+" " Plug 'shaunsingh/nord.nvim'
+" " Plug 'rebelot/kanagawa.nvim'
 Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 
 call plug#end()

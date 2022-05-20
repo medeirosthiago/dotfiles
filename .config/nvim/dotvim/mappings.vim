@@ -22,7 +22,7 @@ nmap <leader>gl :e ~/notes/glossary.md<CR>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>lf <cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>
-nnoremap <leader>le <cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>
+nnoremap <leader>ld <cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>
 nnoremap <leader>gb <cmd>lua require("telescope.builtin").git_branches()<cr>
 nnoremap <leader>gc <cmd>lua require("telescope.builtin").git_bcommits()<cr>
 nnoremap <leader>gp <cmd>lua require('telescope').extensions.gh.pull_request()<cr>
@@ -32,5 +32,5 @@ nnoremap <leader>nt <cmd>lua require("plugins.telescope").search_notes()<cr>
 nnoremap <leader>qr <cmd>lua require("plugins.telescope").search_query()<cr>
 
 nnoremap <C-B> <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <C-_> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({sorting_strategy='ascending', layout_config={prompt_position='top'}})<cr>
+nnoremap <C-/> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({sorting_strategy='ascending', layout_config={prompt_position='top'}})<cr>
 nnoremap <C-h> <cmd>lua require('telescope.builtin').help_tags()<cr>
