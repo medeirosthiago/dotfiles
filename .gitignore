@@ -1,22 +1,24 @@
-.editorconfig
-.python-version
-.vscode/
-tags*
-Session.vim
-.idea/
+
 .envrc
 .DS_Store
+
+# editor
+.vscode/
+.idea/
+
+# vim
+.vim/
+Session.vim
+.netrwhist
+
+# python
 .venv/
+.python-version
+localrc.lua
 *.key
 *egg-info
 
-.vim/
-
+# misc
+tags*
 querious/
-
-poetry.lock
-pyproject.toml
-
 hack-*
-.netrwhist
-localrc.lua
