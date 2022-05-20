@@ -1,27 +1,31 @@
-# drop?
-# oh-my-zsh
-# export ZSH="$HOME/.oh-my-zsh"
 
-# ZSH_THEME="robbyrussell"
-# plugins=(
-#     git
-#     tmux
-#     zsh-syntax-highlighting
-#     zsh-autosuggestions
-#     aws
-#     brew
-#     # cask
-#     python
-#     pyenv
-#     history
-#     docker
-#     docker-compose
-#     httpie
-#     thefuck
-# )
-# source $ZSH/oh-my-zsh.sh
+# Clone zcomet if necessary
+if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
+  git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
+fi
 
-export SHOW_AWS_PROMPT=false
+# Source zcomet.zsh
+source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
+
+zcomet load ohmyzsh plugins/git
+zcomet load ohmyzsh plugins/tmux
+zcomet load ohmyzsh plugins/brew
+zcomet load ohmyzsh plugins/history
+zcomet load ohmyzsh plugins/docker
+zcomet load ohmyzsh plugins/docker-compose
+zcomet load ohmyzsh plugins/httpie
+zcomet load ohmyzsh plugins/python
+zcomet load ohmyzsh plugins/pyenv
+
+zcomet load zdharma-continuum/fast-syntax-highlighting
+zcomet load zsh-users/zsh-completions
+zcomet load zsh-users/zsh-autosuggestions
+
+zcomet compinit
+
+fpath=($HOME/.zcomet/repos/zsh-users/zsh-completions/src $fpath)
+
+# export SHOW_AWS_PROMPT=false
 # export TERM='screen-256color'
 export TERM='xterm-256color'
 bindkey -e
@@ -30,16 +34,12 @@ bindkey -e
 bindkey "\e[3~" delete-char
 
 # avoid command not found: compdef
-autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
+# autoload -Uz compinit
+# for dump in ~/.zcompdump(N.mh+24); do
+#   compinit
+# done
+# compinit -C
 
-# source <(antibody init)
-# antibody bundle < ~/.zsh_plugins.txt
-antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
-source ~/.zsh_plugins.sh
 
 # starship
 eval "$(starship init zsh )"
@@ -51,8 +51,9 @@ export EDITOR=nvim
 export PATH="$PATH:$HOME/.local/bin"
 export MYVIMRC="$HOME/.config/nvim/init.lua"
 
-# alias
+## version dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config-nvim='GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim'
 
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
@@ -70,19 +71,10 @@ if [ "$(command -v bat)" ]; then
 fi
 
 
-alias ezsh="\nvim $HOME/.zshrc"
-alias evim="\nvim $HOME/.vimrc"
-alias etmux="\nvim $HOME/.tmux.conf"
-alias estar="\nvim $HOME/.config/starship.toml"
-alias karabina="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'"
-alias keymac="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile mac"
-alias keymec="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile mec"
-alias keyforty="'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile forty"
-alias zathura="/usr/local/opt/zathura/bin/zathura"
-
 # python
-export PYENV_ROOT="$(pyenv root)"
-eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
@@ -105,7 +97,6 @@ fzf_nord=$FZF_DEFAULT_OPTS'
 '
 export FZF_DEFAULT_OPTS=$fzf_nord
 
-export PATH="$HOME/src/clones/git-fuzzy/bin:$PATH"
 # edit cli with vim
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^x' edit-command-line
