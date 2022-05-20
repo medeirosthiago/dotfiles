@@ -23,5 +23,6 @@ localrc.lua
 tags*
 querious/
 hack-*
+.tmux/
 .config/karabiner/assets/
 .config/karabiner/automatic_backups/
