@@ -8,6 +8,7 @@
 
 # vim
 .vim/
+.config/nvim/hack/
 Session.vim
 .netrwhist
 
