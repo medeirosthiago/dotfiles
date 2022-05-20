@@ -22,3 +22,5 @@ localrc.lua
 tags*
 querious/
 hack-*
+.config/karabiner/assets/
+.config/karabiner/automatic_backups/
