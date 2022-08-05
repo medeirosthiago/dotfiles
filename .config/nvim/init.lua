@@ -8,7 +8,7 @@ require('plugins.lsp')
 require('plugins.telescope')
 require('plugins.treesitter')
 require('plugins.lualine')
--- require('plugins.harpoon')
+require('plugins.harpoon')
 require('plugins.completion')
 require('plugins.misc')
 

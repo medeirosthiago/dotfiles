@@ -47,6 +47,7 @@ augroup end
 
 let g:netrw_altfile = 1
 let g:netrw_fastbrowse = 0
+let g:netrw_liststyle= 3
 autocmd FileType netrw setl bufhidden=wipe
 
 " some remaps hack

@@ -3,6 +3,7 @@ local on_attach = function()
   -- local opts = { noremap=true, silent=true }
   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer=0 })
   vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, { buffer=0 })
+  -- vim.keymap.set("n", "<C-]>", vim.cmd('vsplit | lua vim.lsp.buf.definition()'), { buffer=0 })
   vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer=0 })
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer=0 })
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer=0 })
@@ -64,7 +65,7 @@ local sumneko_root_path = ""
 local sumneko_binary = ""
 
 sumneko_root_path = HOME ..  "/src/clones/lua-language-server"
-sumneko_binary = HOME ..  "/src/clones/lua-language-server/bin/macOS/lua-language-server"
+sumneko_binary = HOME ..  "/src/clones/lua-language-server/bin/lua-language-server"
 
 local luadev = require("lua-dev").setup({
     library = {vimruntime = true, types = true, plugins = true},

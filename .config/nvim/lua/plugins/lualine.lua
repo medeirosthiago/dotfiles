@@ -44,7 +44,6 @@ require'lualine'.setup {
   options = {
     icons_enabled = true,
     theme = onenord_local,
-    -- theme = 'onenord',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -57,11 +56,12 @@ require'lualine'.setup {
       'diff',
       {'diagnostics', sources={'nvim_diagnostic'}}
     },
-    lualine_c = {'filename'},  -- buffers maybe
-    lualine_x = {
-      'encoding',
-      {'filetype', icon_only = true}
+    lualine_c = {
+      '%=',
+      {'filetype', icon_only = true},
+      {'filename', path = 2, file_status = true}
     },
+    lualine_x = {'encoding'},
     lualine_y = {'location'},
     lualine_z = {'progress'}
   },
