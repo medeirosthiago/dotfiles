@@ -1,8 +1,7 @@
-
+--[[
 local clock = os.clock
 local function sleep(n)
-    local t0 = clock()
-    while clock() - t0 <= n do end
+    local t0 = clock() while clock() - t0 <= n do end
 end
 
 
@@ -20,22 +19,6 @@ local function bluetooth(power)
     t:start()
 end
 
-local function pairtrackpad(power)
-    if power == "on" then
-        print("Pairing trackpad... ")
-        local t = hs.task.new("/opt/homebrew/bin/blueutil", checkBluetoothResult, {"--unpair", "14-c2-13-ef-e1-e9"})
-        sleep(3)
-        local t = hs.task.new("/opt/homebrew/bin/blueutil", checkBluetoothResult, {"--pair", "14-c2-13-ef-e1-e9"})
-        t:start()
-    else
-        print("Unpairing trackpad... ")
-        local t = hs.task.new("/opt/homebrew/bin/blueutil", checkBluetoothResult, {"--unpair", "14-c2-13-ef-e1-e9"})
-        t:start()
-    end
-end
-
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "T", function()
-
     pairtrackpad("off")
     bluetooth("off")
     hs.notify.new({title="Hammerspoon", informativeText="Trackpad being paired"}):send()
@@ -50,17 +33,46 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "T", function()
 end)
 
 
---[[ local function f(event)
+local function f(event)
     if event == hs.caffeinate.watcher.systemWillSleep then
-        pairtrackpad("off")
         bluetooth("off")
     elseif event == hs.caffeinate.watcher.screensDidWake then
         bluetooth("on")
-        sleep(7)
-        pairtrackpad("on")
     end
-end ]]
+end
 
--- watcher = hs.caffeinate.watcher.new(f)
--- watcher:start()
+watcher = hs.caffeinate.watcher.new(f)
+watcher:start()
+ ]]
+
+
+local function slack_away(status)
+    print("Setting slack " .. status)
+    local t = hs.task.new("~/src/clones/slack_status_updater/slack_status.sh", nil, { status })
+	t:start()
+end
+
+hs.hotkey.bind(
+	{"cmd", "alt", "ctrl"}, "O",
+	function()
+		hs.notify.new({title="Hammerspoon", informativeText="OOO"}):send()
+		slack_away("ooo")
+	end,
+	nil,
+	function()
+		hs.notify.new({title="Hammerspoon", informativeText="Clean status"}):send()
+		slack_away("none")
+	end
+)
+
+--[[ local function f(event)
+    if event == hs.caffeinate.watcher.systemWillSleep then
+        slack_away("ooo")
+    elseif event == hs.caffeinate.watcher.screensDidWake then
+        slack_away("none")
+    end
+end
+
+local watcher = hs.caffeinate.watcher.new(f)
+watcher:start() ]]
 

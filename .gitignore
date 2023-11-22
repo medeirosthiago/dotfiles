@@ -10,7 +10,7 @@
 # vim
 .vim/
 .config/nvim/hack/
-Session.vim
+Session.*
 .netrwhist
 
 # python
@@ -27,3 +27,5 @@ hack-*
 .tmux/
 .config/karabiner/assets/
 .config/karabiner/automatic_backups/
+
+pyrightconfig.json

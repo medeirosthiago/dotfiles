@@ -53,7 +53,8 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 
 ## version dotfile
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias config-nvim='GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim'
+alias config-nvim='GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim +Git'
+alias nvimg='nvim +Git +only'
 
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
@@ -64,7 +65,7 @@ if [ "$(command -v exa)" ]; then
     alias ll='exa -l --color always -a -s type'
 fi
 
-export BAT_THEME='Nord'
+export BAT_THEME='Catppuccin-macchiato'
 if [ "$(command -v bat)" ]; then
   unalias -m 'cat'
   alias cat='bat -pp'
@@ -72,11 +73,20 @@ fi
 
 
 # python
+# ARCH=`arch`
+# if [[ "${ARCH}"  == "arm64" ]]; then
+#     export PYENV_ROOT="$HOME/.pyenv/arm64"
+# else
+#     export PYENV_ROOT="$HOME/.pyenv/rosetta"
+# fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 eval "$(thefuck --alias)"
@@ -90,24 +100,61 @@ fzf_dracula=$FZF_DEFAULT_OPTS'
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
 '
 
+fzf_macchiato=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#a3be8c,fg+:-1,bg+:-1,hl+:#f4dbd6
+--color=info:#b48ead,prompt:#a3be8c,pointer:#ed8796,marker:#ed8796,spinner:#f4dbd6
+'
+
 fzf_nord=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#a3be8c,fg+:-1,bg+:-1,hl+:#ebcb8b
 --color=info:#b48ead,prompt:#a3be8c,pointer:#bf616a,marker:#bf616a,spinner:#ebcb8b
 '
-export FZF_DEFAULT_OPTS=$fzf_nord
+export FZF_DEFAULT_OPTS=$fzf_macchiato
 
 # edit cli with vim
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^x' edit-command-line
 
-# terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/Cellar/tfenv/2.0.0/versions/0.12.24/terraform terraform
+alias luamake=/Users/mdst/src/clones/lua-language-server/3rd/luamake/luamake
+
+eval "$(op completion zsh)"; compdef _op op
+
+# Path for compilers ----
+# Path to openssl
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+
+# Path to readline
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+
+# Path to sqlite
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+
+# Path to zlib
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
+
+# Path to openldap
+export LDFLAGS="-L/opt/homebrew/opt/openldap/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openldap/include"
+
+# Path to curl
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 
 # The next line updates PATH for the Google Cloud SDK.
-GCLOUD_PATH="$HOME/repos/misc-draft/google-cloud-sdk"
-if [ -f "${GCLOUD_PATH}/path.zsh.inc" ]; then . "${GCLOUD_PATH}/path.zsh.inc"; fi
+if [ -f '/Users/mdst/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mdst/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "${GCLOUD_PATH}/completion.zsh.inc" ]; then . "${GCLOUD_PATH}/completion.zsh.inc"; fi
+if [ -f '/Users/mdst/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mdst/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /Users/mdst/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# Poetry
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
