@@ -1,5 +1,5 @@
 local cp = require("catppuccin.palettes").get_palette()
-local config = require("catppuccin.config").options
+local config = require("catppuccin").options
 local custom_cappuccin = {}
 
 custom_cappuccin.normal = {
@@ -10,31 +10,31 @@ custom_cappuccin.normal = {
 
 custom_cappuccin.insert = {
 	a = { fg = cp.green, bg = cp.base, gui = "bold" },
-  b = { fg = cp.surface1, bg = cp.teal },
-  c = { fg = cp.surface1, bg = cp.teal },
+	b = { fg = cp.surface1, bg = cp.teal },
+	c = { fg = cp.surface1, bg = cp.teal },
 }
 
 custom_cappuccin.command = {
 	a = { fg = cp.peach, bg = cp.base, gui = "bold" },
-  b = { fg = cp.surface1, bg = cp.peach },
-  c = { fg = cp.surface1, bg = cp.peach },
+	b = { fg = cp.surface1, bg = cp.peach },
+	c = { fg = cp.surface1, bg = cp.peach },
 }
 
 custom_cappuccin.visual = {
 	a = { fg = cp.mauve, bg = cp.base, gui = "bold" },
-  b = { fg = cp.surface1, bg = cp.mauve },
-  c = { fg = cp.surface1, bg = cp.mauve },
+	b = { fg = cp.surface1, bg = cp.mauve },
+	c = { fg = cp.surface1, bg = cp.mauve },
 }
 
 custom_cappuccin.replace = {
 	a = { fg = cp.red, bg = cp.base, gui = "bold" },
-  b = { fg = cp.surface1, bg = cp.red },
-  c = { fg = cp.surface1, bg = cp.red },
+	b = { fg = cp.surface1, bg = cp.red },
+	c = { fg = cp.surface1, bg = cp.red },
 }
 
 custom_cappuccin.inactive = {
 	a = { bg = cp.mantle, hg = cp.blue },
-  b = { bg = cp.mantle, hg = cp.surface1, gui = "bold" },
+	b = { bg = cp.mantle, hg = cp.surface1, gui = "bold" },
 	c = { bg = cp.mantle, hg = cp.overlay0 },
 }
 

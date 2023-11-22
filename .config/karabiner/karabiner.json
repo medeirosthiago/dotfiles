@@ -46,7 +46,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "p",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -58,7 +58,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Users/'$(whoami)'/Applications/JetBrains Toolbox/PyCharm Professional.app'"
+                                        "shell_command": "open 'Applications/Slack.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -77,7 +77,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open 'Applications/Slack.app'"
+                                        "shell_command": "open 'Applications/Cron.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -103,44 +103,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Spotify.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open ~"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
@@ -153,26 +115,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Bear.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Safari.app'"
+                                        "shell_command": "open '/Applications/Notes.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -191,7 +134,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Firefox.app'"
+                                        "shell_command": "open '/Applications/Arc.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -229,7 +172,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/TickTick.app'"
+                                        "shell_command": "open '/Applications/Setapp/NotePlan.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -834,7 +777,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "p",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_shift"
@@ -846,7 +789,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Users/'$(whoami)'/Applications/JetBrains Toolbox/PyCharm Professional.app'"
+                                        "shell_command": "open 'Applications/Slack.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -865,7 +808,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open 'Applications/Slack.app'"
+                                        "shell_command": "open 'Applications/Cron.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -891,44 +834,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Spotify.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open ~"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
@@ -941,26 +846,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Bear.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Safari.app'"
+                                        "shell_command": "open '/Applications/Notes.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -979,7 +865,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Firefox.app'"
+                                        "shell_command": "open '/Applications/Arc.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -1017,26 +903,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/TickTick.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "t",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_shift"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/TickTick.app'"
+                                        "shell_command": "open '/Applications/Setapp/NotePlan.app'"
                                     }
                                 ],
                                 "type": "basic"

@@ -1,155 +1,60 @@
-local nvim_lsp = require('lspconfig')
-local on_attach = function()
-  -- local opts = { noremap=true, silent=true }
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer=0 })
-  vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, { buffer=0 })
+local lsp = require('lsp-zero')
+
+lsp.preset('recommended')
+
+lsp.ensure_installed({
+  'bashls',
+  'gopls',
+  'jsonls',
+  'dockerls',
+  'pyright',
+  'sqlls',
+  'terraformls',
+  'tsserver',
+  'yamlls',
+  'rust_analyzer',
+})
+
+local cmp = require('cmp')
+local cmp_sources = {
+  { name = 'nvim_lsp' },
+  -- { name = 'nvim_lua' },
+  { name = 'path' },
+  { name = 'look' },
+  { name = 'buffer', keyword_length = 5 },
+}
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+  ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+  ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+  ["<C-Space>"] = cmp.mapping.complete(),
+  ["<CR>"] = cmp.mapping.confirm(cmp_select)
+})
+
+lsp.setup_nvim_cmp({ mapping = cmp_mappings, sources = cmp_sources })
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  -- vim.keymap.set("n", "<C-]>", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   -- vim.keymap.set("n", "<C-]>", vim.cmd('vsplit | lua vim.lsp.buf.definition()'), { buffer=0 })
-  vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer=0 })
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>lr", vim.cmd.LspRestart, opts)
+
+  --[[ vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { buffer=0 })
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer=0 })
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer=0 })
   vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer=0 })
-  vim.keymap.set("n", "rn", vim.lsp.buf.rename, { buffer=0 })
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { buffer=0 })
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { buffer=0 })
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dc', '<Cmd>lua vim.lsp.diagnostic.clear(vim.api.nvim_get_current_buf())<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ds', '<Cmd>lua vim.cmd("e %")<CR>', opts)
-end
+  vim.keymap.set("n", "rn", vim.lsp.buf.rename, { buffer=0 }) ]]
+end)
 
-
-
-------
--- Configurations:
-
-
-----
--- bash: npm i -g bash-language-server
-nvim_lsp['bashls'].setup{
-  on_attach = on_attach
-}
-
-
-----
--- go install golang.org/x/tools/gopls@latest
-nvim_lsp['gopls'].setup{
-  on_attach = on_attach
-}
-
-
-----
--- json: npm i -g vscode-langservers-extracted
-nvim_lsp['jsonls'].setup{
-  on_attach = on_attach,
-  commands = {
-    Format = {
-      function()
-        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-      end
-    }
-  }
-}
-
-
-----
--- docker: npm install -g dockerfile-language-server-nodejs
-nvim_lsp['dockerls'].setup{
-  on_attach = on_attach
-}
-
-
-----
--- lua: https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
--- lua-dev.nvim : https://github.com/folke/lua-dev.nvim
-HOME = vim.fn.expand('$HOME')
-
-local sumneko_root_path = ""
-local sumneko_binary = ""
-
-sumneko_root_path = HOME ..  "/src/clones/lua-language-server"
-sumneko_binary = HOME ..  "/src/clones/lua-language-server/bin/lua-language-server"
-
-local luadev = require("lua-dev").setup({
-    library = {vimruntime = true, types = true, plugins = true},
-    lspconfig = {
-        -- capabilities = capabilities,
-        on_attach = on_attach,
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-        settings = {
-            Lua = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                    -- Setup your lua path
-                    path = vim.split(package.path, ';')
-                },
-                diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = {'vim'}
-                },
-                workspace = {
-                    -- Make the server aware of Neovim runtime files
-                    library = {
-                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                        ['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/'] = true,
-                    }
-                }
-            }
-        }
-    }
-})
-nvim_lsp['sumneko_lua'].setup(luadev)
-
-
-
-----
--- python: https://github.com/python-lsp/python-lsp-server
-nvim_lsp['pylsp'].setup{
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern('.git');
-  settings = {
-    pylsp = {
-      plugins = {
-        yapf = {enabled = false},
-        pylint = {enabled = false},
-        pycodestyle = {enabled = false},
-        pyflakes = {enabled = false},
-        pydocstyle = {enabled = false},
-        flake8 = {enabled = true}
-      },
-      type = "string"
-    }
-  }
-}
-
-
-
-----
--- sql: https://github.com/joe-re/sql-language-server
-nvim_lsp['sqlls'].setup{
-  on_attach = on_attach
-}
-
-
-
-----
--- terraform: https://github.com/hashicorp/terraform-ls
--- brew install hashicorp/tap/terraform-ls
-nvim_lsp['terraformls'].setup{
-  cmd = { "terraform-ls", "serve" },
-  filetypes = { "terraform" },
-  on_attach = on_attach
-}
-
-
-----
--- vim: npm install -g vim-language-server
-nvim_lsp['vimls'].setup{
-  on_attach = on_attach
-}
-
-
-----
--- yaml: npm install -g yaml-language-server
-nvim_lsp['yamlls'].setup{
-  on_attach = on_attach
-}
+lsp.setup()

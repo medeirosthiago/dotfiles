@@ -1,37 +1,16 @@
--- Harpoon mark commands
-vim.cmd([[
-    nnoremap <leader>' :lua require("harpoon.mark").add_file()<CR>
-    nnoremap <silent>'a :lua require("harpoon.ui").nav_file(1)<CR>
-    nnoremap <silent>'s :lua require("harpoon.ui").nav_file(2)<CR>
-    nnoremap <silent>'d :lua require("harpoon.ui").nav_file(3)<CR>
-    nnoremap <silent>'f :lua require("harpoon.ui").nav_file(4)<CR>
-    nnoremap <silent>'g :lua require("harpoon.ui").nav_file(5)<CR>
-    nnoremap <silent>'h :lua require("harpoon.ui").nav_file(6)<CR>
-    nnoremap <silent>'j :lua require("harpoon.ui").nav_file(7)<CR>
-    nnoremap <silent>'k :lua require("harpoon.ui").nav_file(8)<CR>
-    nnoremap <silent>'l :lua require("harpoon.ui").nav_file(9)<CR>
-    nnoremap <silent>'; :lua require("harpoon.ui").nav_file(10)<CR>
-    nnoremap <silent>'t :lua require("harpoon.term").gotoTerminal(3)<CR>
-]])
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
 
--- Other maps (terminal, ui, etc)
-vim.api.nvim_set_keymap("n", "<leader>h", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>H", ':lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>', { noremap = true })
+vim.keymap.set("n", "<leader>a", mark.add_file)
+vim.keymap.set("n", "<leader>ha", ui.toggle_quick_menu)
 
-vim.api.nvim_set_keymap("n", "<leader>t", ':lua require("harpoon.term").gotoTerminal(1)<CR>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>T", ':lua require("harpoon.term").gotoTerminal(2)<CR>', { noremap = true })
-
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><Enter>",
-	':lua require("harpoon.tmux").sendCommand(1, 1)<CR>',
-	{ noremap = true }
-)
-
-vim.api.nvim_set_keymap("n", "<leader>\\", ':lua require("harpoon.tmux").sendCommand(2, 2)<CR>', { noremap = true })
+vim.keymap.set("n", "'a", function() ui.nav_file(1) end)
+vim.keymap.set("n", "'s", function() ui.nav_file(2) end)
+vim.keymap.set("n", "'d", function() ui.nav_file(3) end)
+vim.keymap.set("n", "'f", function() ui.nav_file(4) end)
 
 require('harpoon').setup({
-    menu = {
-        width = 80
-    }
+	menu = {
+		width = 90
+	}
 })

@@ -1,12 +1,14 @@
-vim.g.mapleader = " "
-
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
+
 vim.opt.scrolloff = 8
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -27,12 +29,11 @@ vim.g.netrw_altfile = 1
 vim.g.netrw_fastbrowse = 0
 vim.g.netrw_liststyle = 0
 
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
 vim.g.python3_host_prog = "$HOME/.pyenv/versions/tools/bin/python"
 
--- Wondering if I really need those
--- vim.opt.termguicolors = true
--- vim.opt.updatetime = 100
--- vim.opt.tags = "tags"
--- vim.opt.backup = false
--- vim.opt.writebackup = false
--- vim.opt.swapfile = false
+vim.g.mapleader = " "
